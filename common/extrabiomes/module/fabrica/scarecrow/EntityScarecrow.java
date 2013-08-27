@@ -24,7 +24,7 @@ public class EntityScarecrow extends EntityGolem {
 	public EntityScarecrow(World world) {
 		super(world);
 		
-		texture = "/mods/ExtrabiomesXL/textures/models/scarecrow.png";
+		texture = "/mods/extrabiomesxl/textures/models/scarecrow.png";
 		
 		preventEntitySpawning = true;
 		

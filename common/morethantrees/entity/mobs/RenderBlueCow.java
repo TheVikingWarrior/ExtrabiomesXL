@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -21,6 +21,7 @@ public class RenderBlueCow extends RenderLiving
         super.doRenderLiving(par1EntityBlueCow, par2, par4, par6, par8, par9);
     }
     
+    @Override
     public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderBlueCow((EntityBlueCow) par1EntityLiving, par2, par4, par6, par8, par9);
@@ -32,8 +33,20 @@ public class RenderBlueCow extends RenderLiving
      * has signature public void doRender(T entity, double d, double d1, double d2, float f, float f1). But JAD is pre 1.5 so doesn't do
      * that.
      */
+    @Override
     public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderBlueCow((EntityBlueCow) par1Entity, par2, par4, par6, par8, par9);
+    }
+    
+    protected ResourceLocation func_110886_a(EntityBlueCow par1EntityPig)
+    {
+        return new ResourceLocation("mtjt:textures/mobs/bluecow.png");
+    }
+    
+    @Override
+    protected ResourceLocation func_110775_a(Entity par1Entity)
+    {
+        return this.func_110886_a((EntityBlueCow) par1Entity);
     }
 }

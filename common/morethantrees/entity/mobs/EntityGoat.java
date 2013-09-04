@@ -7,8 +7,6 @@ import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAIOcelotAttack;
-import net.minecraft.entity.ai.EntityAIOcelotSit;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITargetNonTamed;
 import net.minecraft.entity.ai.EntityAITempt;
@@ -24,8 +22,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityGoat extends EntityTameable
 {
@@ -37,7 +33,6 @@ public class EntityGoat extends EntityTameable
     public EntityGoat(World par1World)
     {
         super(par1World);
-        this.texture = "/mods/MTJT/textures/mobs/goat.png";
         this.setSize(0.6F, 0.8F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(1, new EntityAISwimming(this));
@@ -49,9 +44,10 @@ public class EntityGoat extends EntityTameable
         this.tasks.addTask(9, new EntityAIMate(this, 0.23F));
         this.tasks.addTask(10, new EntityAIWander(this, 0.23F));
         this.tasks.addTask(11, new EntityAIWatchClosest(this, EntityPlayer.class, 10.0F));
-        this.targetTasks.addTask(1, new EntityAITargetNonTamed(this, EntityChicken.class, 14.0F, 750, false));
+        this.targetTasks.addTask(1, new EntityAITargetNonTamed(this, EntityChicken.class, 750, false));
     }
     
+    @Override
     protected void entityInit()
     {
         super.entityInit();
@@ -61,11 +57,12 @@ public class EntityGoat extends EntityTameable
     /**
      * main AI tick function, replaces updateEntityActionState
      */
+    @Override
     public void updateAITick()
     {
         if (this.getMoveHelper().isUpdating())
         {
-            float var1 = this.getMoveHelper().getSpeed();
+            double var1 = this.getMoveHelper().getSpeed();
             
             if (var1 == 0.18F)
             {
@@ -93,35 +90,16 @@ public class EntityGoat extends EntityTameable
     /**
      * Determines if an entity can be despawned, used on idle far away entities
      */
+    @Override
     protected boolean canDespawn()
     {
         return !this.isTamed();
     }
     
-    @SideOnly(Side.CLIENT)
-    /**
-     * Returns the texture's file path as a String.
-     */
-    public String getTexture()
-    {
-        switch (this.getTameSkin())
-        {
-            case 0:
-                return "/mods/MTJT/textures/mobs/goat.png";
-            case 1:
-                return "/mods/MTJT/textures/mobs/goat.png";
-            case 2:
-                return "/mods/MTJT/textures/mobs/goat.png";
-            case 3:
-                return "/mods/MTJT/textures/mobs/goat.png";
-            default:
-                return super.getTexture();
-        }
-    }
-    
     /**
      * Returns true if the newer Entity AI code should be run
      */
+    @Override
     public boolean isAIEnabled()
     {
         return true;
@@ -135,12 +113,14 @@ public class EntityGoat extends EntityTameable
     /**
      * Called when the mob is falling. Calculates and applies fall damage.
      */
+    @Override
     protected void fall(float par1)
     {}
     
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
+    @Override
     public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeEntityToNBT(par1NBTTagCompound);
@@ -150,6 +130,7 @@ public class EntityGoat extends EntityTameable
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
+    @Override
     public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readEntityFromNBT(par1NBTTagCompound);
@@ -159,6 +140,7 @@ public class EntityGoat extends EntityTameable
     /**
      * Returns the sound this mob makes while it's alive.
      */
+    @Override
     protected String getLivingSound()
     {
         return this.isTamed() ? (this.isInLove() ? "mob.cat.purr" : (this.rand.nextInt(4) == 0 ? "mob.cat.purreow" : "mob.cat.meow")) : "";
@@ -167,6 +149,7 @@ public class EntityGoat extends EntityTameable
     /**
      * Returns the sound this mob makes when it is hurt.
      */
+    @Override
     protected String getHurtSound()
     {
         return "mob.cat.hitt";
@@ -175,6 +158,7 @@ public class EntityGoat extends EntityTameable
     /**
      * Returns the sound this mob makes on death.
      */
+    @Override
     protected String getDeathSound()
     {
         return "mob.cat.hitt";
@@ -183,6 +167,7 @@ public class EntityGoat extends EntityTameable
     /**
      * Returns the volume for the sounds this mob makes.
      */
+    @Override
     protected float getSoundVolume()
     {
         return 0.4F;
@@ -191,11 +176,13 @@ public class EntityGoat extends EntityTameable
     /**
      * Returns the item ID for the item the mob drops on death.
      */
+    @Override
     protected int getDropItemId()
     {
         return Item.leather.itemID;
     }
     
+    @Override
     public boolean attackEntityAsMob(Entity par1Entity)
     {
         return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 3);
@@ -221,12 +208,14 @@ public class EntityGoat extends EntityTameable
      * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param par2 - Level of
      * Looting used to kill this mob.
      */
+    @Override
     protected void dropFewItems(boolean par1, int par2)
     {}
     
     /**
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
      */
+    @Override
     public boolean interact(EntityPlayer par1EntityPlayer)
     {
         ItemStack var2 = par1EntityPlayer.inventory.getCurrentItem();
@@ -294,6 +283,7 @@ public class EntityGoat extends EntityTameable
     /**
      * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on the animal type)
      */
+    @Override
     public boolean isBreedingItem(ItemStack par1ItemStack)
     {
         return par1ItemStack != null && par1ItemStack.itemID == Item.fishRaw.itemID;
@@ -302,6 +292,7 @@ public class EntityGoat extends EntityTameable
     /**
      * Returns true if the mob is currently able to mate with the specified mob.
      */
+    @Override
     public boolean canMateWith(EntityAnimal par1EntityAnimal)
     {
         if (par1EntityAnimal == this)
@@ -336,6 +327,7 @@ public class EntityGoat extends EntityTameable
     /**
      * Checks if the entity's current position is a valid location to spawn this entity.
      */
+    @Override
     public boolean getCanSpawnHere()
     {
         if (this.worldObj.rand.nextInt(3) == 0)
@@ -371,6 +363,7 @@ public class EntityGoat extends EntityTameable
     /**
      * Gets the username of the entity.
      */
+    @Override
     public String getEntityName()
     {
         return this.isTamed() ? "entity.Cat.name" : super.getEntityName();
@@ -393,6 +386,7 @@ public class EntityGoat extends EntityTameable
         }
     }
     
+    @Override
     public EntityAgeable createChild(EntityAgeable par1EntityAgeable)
     {
         return this.spawnBabyAnimal(par1EntityAgeable);

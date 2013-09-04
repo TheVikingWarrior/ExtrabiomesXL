@@ -12,10 +12,8 @@ import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -37,7 +35,6 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
     public EntityBlueCow(World par1World)
     {
         super(par1World);
-        this.texture = "/mods/MTJT/textures/mobs/bluecow.png";
         this.setSize(0.9F, 1.3F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -53,6 +50,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
     /**
      * Returns true if the newer Entity AI code should be run
      */
+    @Override
     public boolean isAIEnabled()
     {
         return true;
@@ -63,12 +61,13 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
         return 10;
     }
     
+    @Override
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
         this.field_70888_h = this.field_70886_e;
         this.field_70884_g = this.destPos;
-        this.destPos = (float) ((double) this.destPos + (double) (this.onGround ? -1 : 4) * 0.3D);
+        this.destPos = (float) (this.destPos + (this.onGround ? -1 : 4) * 0.3D);
         
         if (this.destPos < 0.0F)
         {
@@ -85,7 +84,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
             this.field_70889_i = 1.0F;
         }
         
-        this.field_70889_i = (float) ((double) this.field_70889_i * 0.9D);
+        this.field_70889_i = (float) (this.field_70889_i * 0.9D);
         
         if (!this.onGround && this.motionY < 0.0D)
         {
@@ -105,6 +104,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
     /**
      * Returns the sound this mob makes while it's alive.
      */
+    @Override
     protected String getLivingSound()
     {
         return "mob.cow.say";
@@ -113,6 +113,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
     /**
      * Returns the sound this mob makes when it is hurt.
      */
+    @Override
     protected String getHurtSound()
     {
         return "mob.cow.hurt";
@@ -121,6 +122,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
     /**
      * Returns the sound this mob makes on death.
      */
+    @Override
     protected String getDeathSound()
     {
         return "mob.cow.hurt";
@@ -129,6 +131,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
     /**
      * Plays step sound at given x, y, z for the entity
      */
+    @Override
     protected void playStepSound(int par1, int par2, int par3, int par4)
     {
         this.playSound("mob.cow.step", 0.15F, 1.0F);
@@ -137,6 +140,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
     /**
      * Returns the volume for the sounds this mob makes.
      */
+    @Override
     protected float getSoundVolume()
     {
         return 0.4F;
@@ -145,6 +149,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
     /**
      * Returns the item ID for the item the mob drops on death.
      */
+    @Override
     protected int getDropItemId()
     {
         return Item.leather.itemID;
@@ -154,6 +159,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
      * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param par2 - Level of
      * Looting used to kill this mob.
      */
+    @Override
     protected void dropFewItems(boolean par1, int par2)
     {
         int var3 = this.rand.nextInt(3) + this.rand.nextInt(1 + par2);
@@ -182,6 +188,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
     /**
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
      */
+    @Override
     public boolean interact(EntityPlayer par1EntityPlayer)
     {
         ItemStack var2 = par1EntityPlayer.inventory.getCurrentItem();
@@ -223,6 +230,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
     /**
      * Called when a lightning bolt hits the entity.
      */
+    @Override
     public void onStruckByLightning(EntityLightningBolt par1EntityLightningBolt)
     {
         if (!worldObj.isRemote)
@@ -249,7 +257,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
         entitycow.setEntityHealth(getMaxHealth());
         entitycow.renderYawOffset = renderYawOffset;
         worldObj.spawnEntityInWorld(entitycow);
-        worldObj.spawnParticle("largeexplode", posX, posY + (double) (height / 2.0F), posZ, 0.0D, 0.0D, 0.0D);
+        worldObj.spawnParticle("largeexplode", posX, posY + height / 2.0F, posZ, 0.0D, 0.0D, 0.0D);
         
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
         for (int x = 0; x < 5; x++)
@@ -267,6 +275,7 @@ public class EntityBlueCow extends EntityAnimal implements IShearable
         return new EntityCow(this.worldObj);
     }
     
+    @Override
     public EntityAgeable createChild(EntityAgeable par1EntityAgeable)
     {
         return this.spawnBabyAnimal(par1EntityAgeable);

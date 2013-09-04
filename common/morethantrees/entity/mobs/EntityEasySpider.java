@@ -1,20 +1,17 @@
 package morethantrees.entity.mobs;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.ai.EntityAIControlledByPlayer;
-import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import org.lwjgl.input.Keyboard;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityEasySpider extends EntityAnimal
 {
@@ -27,9 +24,8 @@ public class EntityEasySpider extends EntityAnimal
     public EntityEasySpider(World par1World)
     {
         super(par1World);
-        this.texture = "/mods/MTJT/textures/mobs/easyspider.png";
         this.setSize(1.4F, 0.9F);
-        this.moveSpeed = 0.8F;
+        this.setAIMoveSpeed(0.8F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, this.aiControlledByPlayer = new EntityAIControlledByPlayer(this, 0.34F));
     }
@@ -37,17 +33,20 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * Returns true if the newer Entity AI code should be run
      */
+    @Override
     public boolean isAIEnabled()
     {
         return true;
     }
     
+    @Override
     protected void entityInit()
     {
         super.entityInit();
         this.dataWatcher.addObject(16, new Byte((byte) 0));
     }
     
+    @Override
     protected void updateAITasks()
     {
         super.updateAITasks();
@@ -56,6 +55,7 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * Called to update the entity's position/logic.
      */
+    @Override
     public void onUpdate()
     {
         super.onUpdate();
@@ -74,14 +74,16 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * Returns the Y offset from the entity's position for any entity riding this one.
      */
+    @Override
     public double getMountedYOffset()
     {
-        return (double) this.height * 0.75D - 0.5D;
+        return this.height * 0.75D - 0.5D;
     }
     
     /**
      * Returns the sound this mob makes while it's alive.
      */
+    @Override
     protected String getLivingSound()
     {
         return "mob.spider.say";
@@ -90,6 +92,7 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * Returns the sound this mob makes when it is hurt.
      */
+    @Override
     protected String getHurtSound()
     {
         return "mob.spider.say";
@@ -98,6 +101,7 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * Returns the sound this mob makes on death.
      */
+    @Override
     protected String getDeathSound()
     {
         return "mob.spider.death";
@@ -106,6 +110,7 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * Plays step sound at given x, y, z for the entity
      */
+    @Override
     protected void playStepSound(int par1, int par2, int par3, int par4)
     {
         this.playSound("mob.spider.step", 0.15F, 1.0F);
@@ -114,6 +119,7 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * Returns the item ID for the item the mob drops on death.
      */
+    @Override
     protected int getDropItemId()
     {
         return Item.silk.itemID;
@@ -123,6 +129,7 @@ public class EntityEasySpider extends EntityAnimal
      * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param par2 - Level of
      * Looting used to kill this mob.
      */
+    @Override
     protected void dropFewItems(boolean par1, int par2)
     {
         super.dropFewItems(par1, par2);
@@ -136,6 +143,7 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * returns true if this entity is by a ladder, false otherwise
      */
+    @Override
     public boolean isOnLadder()
     {
         return this.isBesideClimbableBlock();
@@ -144,6 +152,7 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * Sets the Entity inside a web block.
      */
+    @Override
     public void setInWeb()
     {}
     
@@ -159,6 +168,7 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * Get this Entity's EnumCreatureAttribute
      */
+    @Override
     public EnumCreatureAttribute getCreatureAttribute()
     {
         return EnumCreatureAttribute.ARTHROPOD;
@@ -195,6 +205,7 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
+    @Override
     public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeEntityToNBT(par1NBTTagCompound);
@@ -203,6 +214,7 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
+    @Override
     public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readEntityFromNBT(par1NBTTagCompound);
@@ -211,6 +223,7 @@ public class EntityEasySpider extends EntityAnimal
     /**
      * Tries to moves the entity by the passed in displacement. Args: x, y, z
      */
+    @Override
     public void moveEntity(double var1, double var3, double var5)
     {
         if (this.riddenByEntity != null)
@@ -247,8 +260,8 @@ public class EntityEasySpider extends EntityAnimal
             else
             {
                 this.isInWeb = false;
-                this.motionX += this.riddenByEntity.motionX * 7.0D * (double) var10;
-                this.motionZ += this.riddenByEntity.motionZ * 7.0D * (double) var10;
+                this.motionX += this.riddenByEntity.motionX * 7.0D * var10;
+                this.motionZ += this.riddenByEntity.motionZ * 7.0D * var10;
             }
             
             EntityPlayer var11 = (EntityPlayer) this.riddenByEntity;
@@ -266,6 +279,7 @@ public class EntityEasySpider extends EntityAnimal
         }
     }
     
+    @Override
     public boolean interact(EntityPlayer var1)
     {
         if (super.interact(var1))
@@ -288,6 +302,7 @@ public class EntityEasySpider extends EntityAnimal
         return this.aiControlledByPlayer;
     }
     
+    @Override
     public EntityAgeable createChild(EntityAgeable par1EntityAgeable)
     {
         return null;

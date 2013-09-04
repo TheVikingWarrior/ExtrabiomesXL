@@ -1,10 +1,11 @@
 package morethantrees.entity.mobs;
 
-import net.minecraft.client.model.ModelSpider;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntitySpider;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
@@ -36,7 +37,7 @@ public class RenderEasySpider extends RenderLiving
         }
         else
         {
-            this.loadTexture("/mods/MTJT/textures/mobs/easyeyes.png");
+            Minecraft.getMinecraft().func_110434_K().func_110577_a(new ResourceLocation("mtjt:textures/mobs/easyeyes.png"));
             float var4 = 1.0F;
             GL11.glEnable(GL11.GL_BLEND);
             GL11.glDisable(GL11.GL_ALPHA_TEST);
@@ -54,7 +55,7 @@ public class RenderEasySpider extends RenderLiving
             char var5 = 61680;
             int var6 = var5 % 65536;
             int var7 = var5 / 65536;
-            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6 / 1.0F, (float) var7 / 1.0F);
+            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, var6 / 1.0F, var7 / 1.0F);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, var4);
             return 1;
@@ -86,5 +87,16 @@ public class RenderEasySpider extends RenderLiving
     protected int shouldRenderPass(EntityLiving par1EntityLiving, int par2, float par3)
     {
         return this.setSpiderEyeBrightness((EntityEasySpider) par1EntityLiving, par2, par3);
+    }
+    
+    protected ResourceLocation func_110886_a(EntityEasySpider par1EntityPig)
+    {
+        return new ResourceLocation("mtjt:textures/mobs/easyspider.png");
+    }
+    
+    @Override
+    protected ResourceLocation func_110775_a(Entity par1Entity)
+    {
+        return this.func_110886_a((EntityEasySpider) par1Entity);
     }
 }

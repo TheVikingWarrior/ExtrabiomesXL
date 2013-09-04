@@ -1,9 +1,10 @@
 package morethantrees.entity;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.projectile.EntityFireball;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -29,12 +30,12 @@ public class RenderFireBalls extends Render
         float var10 = this.field_77002_a;
         GL11.glScalef(var10 / 1.0F, var10 / 1.0F, var10 / 1.0F);
         byte var11 = 46;
-        this.loadTexture("/gui/items.png");
+        Minecraft.getMinecraft().func_110434_K().func_110577_a(new ResourceLocation("/gui/items.png"));
         Tessellator var12 = Tessellator.instance;
-        float var13 = (float) (var11 % 16 * 16 + 0) / 256.0F;
-        float var14 = (float) (var11 % 16 * 16 + 16) / 256.0F;
-        float var15 = (float) (var11 / 16 * 16 + 0) / 256.0F;
-        float var16 = (float) (var11 / 16 * 16 + 16) / 256.0F;
+        float var13 = (var11 % 16 * 16 + 0) / 256.0F;
+        float var14 = (var11 % 16 * 16 + 16) / 256.0F;
+        float var15 = (var11 / 16 * 16 + 0) / 256.0F;
+        float var16 = (var11 / 16 * 16 + 16) / 256.0F;
         float var17 = 1.0F;
         float var18 = 0.5F;
         float var19 = 0.25F;
@@ -42,10 +43,10 @@ public class RenderFireBalls extends Render
         GL11.glRotatef(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
         var12.startDrawingQuads();
         var12.setNormal(0.0F, 1.0F, 0.0F);
-        var12.addVertexWithUV((double) (0.0F - var18), (double) (0.0F - var19), 0.0D, (double) var13, (double) var16);
-        var12.addVertexWithUV((double) (var17 - var18), (double) (0.0F - var19), 0.0D, (double) var14, (double) var16);
-        var12.addVertexWithUV((double) (var17 - var18), (double) (1.0F - var19), 0.0D, (double) var14, (double) var15);
-        var12.addVertexWithUV((double) (0.0F - var18), (double) (1.0F - var19), 0.0D, (double) var13, (double) var15);
+        var12.addVertexWithUV(0.0F - var18, 0.0F - var19, 0.0D, var13, var16);
+        var12.addVertexWithUV(var17 - var18, 0.0F - var19, 0.0D, var14, var16);
+        var12.addVertexWithUV(var17 - var18, 1.0F - var19, 0.0D, var14, var15);
+        var12.addVertexWithUV(0.0F - var18, 1.0F - var19, 0.0D, var13, var15);
         var12.draw();
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         GL11.glPopMatrix();
@@ -57,8 +58,15 @@ public class RenderFireBalls extends Render
      * has signature public void doRender(T entity, double d, double d1, double d2, float f, float f1). But JAD is pre 1.5 so doesn't do
      * that.
      */
+    @Override
     public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
     {
         this.doRenderFireball((EntityFireBalls) par1Entity, par2, par4, par6, par8, par9);
+    }
+    
+    @Override
+    protected ResourceLocation func_110775_a(Entity entity)
+    {
+        return new ResourceLocation("/gui/items.png");
     }
 }

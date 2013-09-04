@@ -1,11 +1,12 @@
 package morethantrees.util;
 
-import org.lwjgl.opengl.GL11;
-
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.src.ModLoader;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+
+import org.lwjgl.opengl.GL11;
 
 public class DandelionFX extends EntityFX
 {
@@ -33,11 +34,7 @@ public class DandelionFX extends EntityFX
         this.setParticleTextureIndex(0);
     }
     
-    //public int getTextureSize()
-    //{
-    //	return 32;
-    //}
-    
+    @Override
     public void renderParticle(Tessellator tessellator, float f, float f1, float f2, float f3, float f4, float f5)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -46,7 +43,7 @@ public class DandelionFX extends EntityFX
         tessellator1.startDrawingQuads();
         tessellator1.setBrightness(getBrightnessForRender(f));
         
-        float f6 = (((float) particleAge + f) / (float) particleMaxAge) * 32F;
+        float f6 = ((particleAge + f) / particleMaxAge) * 32F;
         if (f6 < 0.0F)
         {
             f6 = 0.0F;
@@ -56,15 +53,15 @@ public class DandelionFX extends EntityFX
             f6 = 1.0F;
         }
         this.particleScale = this.particleScaleOverTime * f6;
-        GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, ModLoader.getMinecraftInstance().renderEngine.getTexture("/mods/MTJT/textures/Particles.png"));
-        float f0 = (float) this.particleTextureIndexX / 16F;
+        Minecraft.getMinecraft().func_110434_K().func_110577_a(new ResourceLocation("mtjt:textures/Particles.png"));
+        float f0 = this.particleTextureIndexX / 16F;
         float f7 = f0 + 0.0624375F;
-        float f8 = (float) this.particleTextureIndexY / 16F;
+        float f8 = this.particleTextureIndexY / 16F;
         float f9 = f8 + 0.0624375F;
         float f10 = 0.1F * particleScale;
-        float f11 = (float) ((prevPosX + (posX - prevPosX) * (double) f) - interpPosX);
-        float f12 = (float) ((prevPosY + (posY - prevPosY) * (double) f) - interpPosY);
-        float f13 = (float) ((prevPosZ + (posZ - prevPosZ) * (double) f) - interpPosZ);
+        float f11 = (float) ((prevPosX + (posX - prevPosX) * f) - interpPosX);
+        float f12 = (float) ((prevPosY + (posY - prevPosY) * f) - interpPosY);
+        float f13 = (float) ((prevPosZ + (posZ - prevPosZ) * f) - interpPosZ);
         float f14 = 1.0F;
         tessellator1.setColorOpaque_F(particleRed * f14, particleGreen * f14, particleBlue * f14);
         tessellator1.addVertexWithUV(f11 - f1 * f10 - f4 * f10, f12 - f2 * f10, f13 - f3 * f10 - f5 * f10, f7, f9);
@@ -73,12 +70,13 @@ public class DandelionFX extends EntityFX
         tessellator1.addVertexWithUV((f11 + f1 * f10) - f4 * f10, f12 - f2 * f10, (f13 + f3 * f10) - f5 * f10, f0, f9);
         
         tessellator1.draw();
-        GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, ModLoader.getMinecraftInstance().renderEngine.getTexture("/particles.png"));
+        Minecraft.getMinecraft().func_110434_K().func_110577_a(new ResourceLocation("textures/particle/particles.png"));
     }
     
     /**
      * Called to update the entity's position/logic.
      */
+    @Override
     public void onUpdate()
     {
         this.prevPosX = this.posX;

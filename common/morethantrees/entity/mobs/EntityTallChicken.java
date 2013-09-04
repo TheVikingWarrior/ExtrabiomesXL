@@ -21,25 +21,24 @@ import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
 
-
 public class EntityTallChicken extends EntityAnimal implements IAnimals
 {
-	public boolean field_753_a = false;
-    int jumpTicks;
-    double prevMotionX;
-    double prevMotionZ;
-    boolean shouldSteer;
-    public float field_752_b = 0.0F;
-    public float destPos = 0.0F;
-    public float field_757_d;
-    public float field_756_e;
-    public float field_755_h;
+    public boolean        field_753_a = false;
+    int                   jumpTicks;
+    double                prevMotionX;
+    double                prevMotionZ;
+    boolean               shouldSteer;
+    public float          field_752_b = 0.0F;
+    public float          destPos     = 0.0F;
+    public float          field_757_d;
+    public float          field_756_e;
+    public float          field_755_h;
     private static String togglekey;
-    private static int itogglekey;
-
+    private static int    itogglekey;
+    
     /** The time until the next egg is spawned. */
-    public int timeUntilNextLehEgg;
-
+    public int            timeUntilNextLehEgg;
+    
     public EntityTallChicken(World par1World)
     {
         super(par1World);
@@ -61,7 +60,7 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
         tasks.addTask(6, new EntityAIWatchClosest(this, net.minecraft.entity.player.EntityPlayer.class, 6F));
         tasks.addTask(7, new EntityAILookIdle(this));
     }
-
+    
     /**
      * Returns true if the newer Entity AI code should be run
      */
@@ -69,52 +68,52 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
     {
         return true;
     }
-
+    
     public int getMaxHealth()
     {
         return 4;
     }
-
+    
     /**
-     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-     * use this to react to sunlight and start to burn.
+     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons use this to react to
+     * sunlight and start to burn.
      */
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
         field_756_e = field_752_b;
         field_757_d = destPos;
-        this.destPos = (float)((double)this.destPos + (double)(this.onGround ? -1 : 4) * 0.3D);
-
+        this.destPos = (float) ((double) this.destPos + (double) (this.onGround ? -1 : 4) * 0.3D);
+        
         if (this.destPos < 0.0F)
         {
             this.destPos = 0.0F;
         }
-
+        
         if (this.destPos > 1.0F)
         {
             this.destPos = 1.0F;
         }
-
+        
         if (this.riddenByEntity != null)
         {
             this.rotationPitch = 0.0F;
         }
-
+        
         if (!this.onGround && this.field_755_h < 1.0F)
         {
             this.field_755_h = 1.0F;
         }
-
-        this.field_755_h = (float)((double)this.field_755_h * 0.9D);
-
+        
+        this.field_755_h = (float) ((double) this.field_755_h * 0.9D);
+        
         if (!this.onGround && this.motionY < 0.0D)
         {
             this.motionY *= 0.6D;
         }
-
+        
         this.field_752_b += this.field_755_h * 2.0F;
-
+        
         if (!isChild() && !worldObj.isRemote && --timeUntilNextLehEgg <= 0)
         {
             worldObj.playSoundAtEntity(this, "mob.chickenplop", 1.0F, (rand.nextFloat() - rand.nextFloat()) * 0.2F + 1.0F);
@@ -122,14 +121,13 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
             timeUntilNextLehEgg = rand.nextInt(6000) + 6000;
         }
     }
-
+    
     /**
      * Called when the mob is falling. Calculates and applies fall damage.
      */
     protected void fall(float f)
-    {
-    }
-
+    {}
+    
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
@@ -137,7 +135,7 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
     {
         super.writeEntityToNBT(par1NBTTagCompound);
     }
-
+    
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
@@ -145,7 +143,7 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
     {
         super.readEntityFromNBT(par1NBTTagCompound);
     }
-
+    
     /**
      * Returns the sound this mob makes while it's alive.
      */
@@ -153,7 +151,7 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
     {
         return "mob.chicken";
     }
-
+    
     /**
      * Returns the sound this mob makes when it is hurt.
      */
@@ -161,7 +159,7 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
     {
         return "mob.chickenhurt";
     }
-
+    
     /**
      * Returns the sound this mob makes on death.
      */
@@ -169,7 +167,7 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
     {
         return "mob.chickenhurt";
     }
-
+    
     /**
      * Returns the item ID for the item the mob drops on death.
      */
@@ -177,19 +175,19 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
     {
         return MTJT.bigFeather.itemID;
     }
-
+    
     /**
      * Drop 0-2 items of this living's type
      */
     protected void dropFewItems(boolean par1, int par2)
     {
         int i = rand.nextInt(3) + rand.nextInt(1 + par2);
-
+        
         for (int j = 0; j < i; j++)
         {
             dropItem(MTJT.bigFeather.itemID, 1);
         }
-
+        
         if (isBurning())
         {
             dropItem(Item.chickenCooked.itemID, 1);
@@ -215,15 +213,15 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
         {
             boolean var7 = true;
             boolean var8 = false;
-
+            
             if (this.onGround && !var7 && !this.isSprinting() && !this.isInWeb)
             {
                 this.setSprinting(true);
             }
-
+            
             int var9 = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
             float var10 = 1.0F;
-
+            
             if (Keyboard.getEventKeyState() && Keyboard.getEventKey() == itogglekey)
             {
                 this.motionY = 0.1D;
@@ -232,7 +230,7 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
                 super.moveEntity(this.motionX, this.motionY, this.motionZ);
                 super.jump();
             }
-
+            
             if (var9 == Block.ice.blockID)
             {
                 var10 = Block.blocksList[var9].slipperiness * 0.3F;
@@ -245,11 +243,11 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
             else
             {
                 this.isInWeb = false;
-                this.motionX += this.riddenByEntity.motionX * 7.0D * (double)var10;
-                this.motionZ += this.riddenByEntity.motionZ * 7.0D * (double)var10;
+                this.motionX += this.riddenByEntity.motionX * 7.0D * (double) var10;
+                this.motionZ += this.riddenByEntity.motionZ * 7.0D * (double) var10;
             }
-
-            EntityPlayer var11 = (EntityPlayer)this.riddenByEntity;
+            
+            EntityPlayer var11 = (EntityPlayer) this.riddenByEntity;
             this.rotationYaw = this.prevRotationYaw = var11.rotationYaw;
             this.prevMotionX = this.motionX * 0.6000000000000001D;
             this.prevMotionZ = this.motionZ * 0.6000000000000001D;
@@ -263,7 +261,7 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
             super.moveEntity(var1, var3, var5);
         }
     }
-
+    
     /**
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
      */
@@ -283,7 +281,7 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
             return false;
         }
     }
-
+    
     /**
      * This function is used when two same-species animals in 'love mode' breed to generate the new baby animal.
      */
@@ -291,10 +289,10 @@ public class EntityTallChicken extends EntityAnimal implements IAnimals
     {
         return new EntityTallChicken(worldObj);
     }
-
-	@Override
-	public EntityAgeable createChild(EntityAgeable var1) 
-	{
-		return this.spawnBabyAnimal(var1);
-	}
+    
+    @Override
+    public EntityAgeable createChild(EntityAgeable var1)
+    {
+        return this.spawnBabyAnimal(var1);
+    }
 }

@@ -6,19 +6,19 @@ import net.minecraft.item.Item;
 
 public class ItemWalnutStick extends Item
 {
-
-	public ItemWalnutStick(int i)
-	{
-		
-		super(i);
-		this.setCreativeTab(MTJT.tabTreeItems);
-		
-	}
-	
-	@Override
-	public void registerIcons(IconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon("MTJT:walnutStick");
-	}
-	
+    
+    public ItemWalnutStick(int i)
+    {
+        
+        super(i);
+        this.setCreativeTab(MTJT.tabTreeItems);
+        
+    }
+    
+    @Override
+    public void registerIcons(IconRegister iconRegister)
+    {
+        itemIcon = iconRegister.registerIcon("MTJT:walnutStick");
+    }
+    
 }

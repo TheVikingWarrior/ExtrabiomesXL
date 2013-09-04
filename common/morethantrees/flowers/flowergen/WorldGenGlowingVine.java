@@ -10,14 +10,15 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenGlowingVine extends WorldGenerator
 {
-	public WorldGenGlowingVine()
-	{
-		
-	}
+    public WorldGenGlowingVine()
+    {   
+        
+    }
+    
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
         int var6 = par3;
-
+        
         for (int var7 = par5; par4 < 128; ++par4)
         {
             if (par1World.isAirBlock(par3, par4, par5))
@@ -37,7 +38,7 @@ public class WorldGenGlowingVine extends WorldGenerator
                 par5 = var7 + par2Random.nextInt(4) - par2Random.nextInt(4);
             }
         }
-
+        
         return true;
     }
 }

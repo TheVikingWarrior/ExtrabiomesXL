@@ -6,19 +6,19 @@ import net.minecraft.item.Item;
 
 public class ItemBlackStick extends Item
 {
-
-	public ItemBlackStick(int i)
-	{
-		
-		super(i);
-		this.setCreativeTab(MTJT.tabTreeItems);
-		
-	}
-	
-	@Override
-	public void registerIcons(IconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon("MTJT:blackStick");
-	}
-	
+    
+    public ItemBlackStick(int i)
+    {
+        
+        super(i);
+        this.setCreativeTab(MTJT.tabTreeItems);
+        
+    }
+    
+    @Override
+    public void registerIcons(IconRegister iconRegister)
+    {
+        itemIcon = iconRegister.registerIcon("MTJT:blackStick");
+    }
+    
 }

@@ -10,20 +10,20 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BiomeRainForrest extends BiomeGenBase
 {
-	
-	public BiomeRainForrest(int i)
-	{
-		
-		super(i);
-		this.setBiomeName("Rain Forest");
-		this.spawnableCreatureList.clear();
-		this.spawnableMonsterList.clear();
-		this.spawnableCreatureList.add(new SpawnListEntry(EntityOcelot.class, 5, 4, 4));
-		this.fillerBlock = (byte)Block.dirt.blockID;
-		this.topBlock = (byte)Block.grass.blockID;
-		this.maxHeight = 0.15F;
-		this.minHeight = 0.1F;
-		
-	}
-	
+    
+    public BiomeRainForrest(int i)
+    {
+        
+        super(i);
+        this.setBiomeName("Rain Forest");
+        this.spawnableCreatureList.clear();
+        this.spawnableMonsterList.clear();
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityOcelot.class, 5, 4, 4));
+        this.fillerBlock = (byte) Block.dirt.blockID;
+        this.topBlock = (byte) Block.grass.blockID;
+        this.maxHeight = 0.15F;
+        this.minHeight = 0.1F;
+        
+    }
+    
 }

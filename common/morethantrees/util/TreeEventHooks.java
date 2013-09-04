@@ -20,32 +20,32 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 
 public class TreeEventHooks
 {
-	private Object dataWatcher;
-	private World worldObj;
-	public Random rand;
-	public int timeUntilNextPoo;
-	private Entity riddenByEntity;
-	public boolean stationary;
-	private Entity EntityCow;
-	private double speedMultiplier;
-	
-	int jumpTicks;
-    double prevMotionX;
-    double prevMotionZ;
-	private boolean isInWeb;
-	public double motionX;
-	public double motionY;
-	public double motionZ;
-	private int KEY_F;
-	private boolean isCollidedHorizontally;
-	
+    private Object  dataWatcher;
+    private World   worldObj;
+    public Random   rand;
+    public int      timeUntilNextPoo;
+    private Entity  riddenByEntity;
+    public boolean  stationary;
+    private Entity  EntityCow;
+    private double  speedMultiplier;
+    
+    int             jumpTicks;
+    double          prevMotionX;
+    double          prevMotionZ;
+    private boolean isInWeb;
+    public double   motionX;
+    public double   motionY;
+    public double   motionZ;
+    private int     KEY_F;
+    private boolean isCollidedHorizontally;
+    
     @ForgeSubscribe
     public void entityDrops(LivingDropsEvent var1)
     {
         EntityLiving var2 = (EntityLiving) var1.entityLiving;
         DamageSource var3 = var1.source;
         boolean var4 = var1.recentlyHit;
-
+        
         if (var4 && var3.getEntity() instanceof EntityPlayer)
         {
             if (var2 instanceof EntitySquid)
@@ -66,18 +66,19 @@ public class TreeEventHooks
             }
         }
     }
+    
     @ForgeSubscribe
     public void onLivingUpdate(LivingEvent.LivingUpdateEvent event)
     {
-    	if ((event.entity instanceof EntityCow)) 
-    	{
-    	      EntityCow cow = (EntityCow)event.entity;
-    	}
-    	if (event.entity instanceof EntityCow && !event.entity.worldObj.isRemote && --this.timeUntilNextPoo <= 0)
+        if ((event.entity instanceof EntityCow))
         {
-    		event.entity.playSound("mob.chicken.plop", 1.0F, timeUntilNextPoo);//, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
-    		event.entity.dropItem(MTJT.cowDrop.itemID, 1);
-    		this.timeUntilNextPoo = 2500;//this.rand.nextInt(6000) + 6000;
+            EntityCow cow = (EntityCow) event.entity;
+        }
+        if (event.entity instanceof EntityCow && !event.entity.worldObj.isRemote && --this.timeUntilNextPoo <= 0)
+        {
+            event.entity.playSound("mob.chicken.plop", 1.0F, timeUntilNextPoo);//, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
+            event.entity.dropItem(MTJT.cowDrop.itemID, 1);
+            this.timeUntilNextPoo = 2500;//this.rand.nextInt(6000) + 6000;
         }
     }
 }

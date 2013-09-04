@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 
 public class RenderGoat extends RenderLiving
 {
-
+    
     public RenderGoat(ModelBase modelbase, float f)
     {
         super(modelbase, f);

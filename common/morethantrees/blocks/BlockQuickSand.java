@@ -18,8 +18,6 @@ public class BlockQuickSand extends Block
         this.setCreativeTab(MTJT.tabTreeBlocks);
     }
     
-    
-
     /**
      * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
      */
@@ -30,16 +28,15 @@ public class BlockQuickSand extends Block
         entity.fallDistance = 0.0F;
         entity.motionZ = 0.0D;
     }
-
+    
     /**
-     * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
-     * cleared to be reused)
+     * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been cleared to be reused)
      */
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k)
     {
         return null;
     }
-
+    
     /**
      * Returns the ID of the items to drop on destruction.
      */
@@ -47,7 +44,7 @@ public class BlockQuickSand extends Block
     {
         return MTJT.quickSand.blockID;
     }
-
+    
     /**
      * Returns the quantity of items to drop on block destruction.
      */
@@ -57,9 +54,9 @@ public class BlockQuickSand extends Block
     }
     
     @Override
-	public void registerIcons(IconRegister par1IconRegister)
-	{
-		this.blockIcon = par1IconRegister.registerIcon("MTJT:quickSand");
-	}
+    public void registerIcons(IconRegister par1IconRegister)
+    {
+        this.blockIcon = par1IconRegister.registerIcon("MTJT:quickSand");
+    }
     
 }

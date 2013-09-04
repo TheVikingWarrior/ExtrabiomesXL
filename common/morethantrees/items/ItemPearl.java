@@ -6,20 +6,20 @@ import net.minecraft.item.Item;
 
 public class ItemPearl extends Item
 {
-
-	public ItemPearl(int i)
-	{
-		
-		super(i);
-		maxStackSize = 16;
-		this.setCreativeTab(MTJT.tabTreeItems);
-		
-	}
-	
-	@Override
-	public void registerIcons(IconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon("MTJT:pearl");
-	}
-	
+    
+    public ItemPearl(int i)
+    {
+        
+        super(i);
+        maxStackSize = 16;
+        this.setCreativeTab(MTJT.tabTreeItems);
+        
+    }
+    
+    @Override
+    public void registerIcons(IconRegister iconRegister)
+    {
+        itemIcon = iconRegister.registerIcon("MTJT:pearl");
+    }
+    
 }

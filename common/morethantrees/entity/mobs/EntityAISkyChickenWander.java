@@ -8,18 +8,18 @@ import net.minecraft.util.Vec3;
 public class EntityAISkyChickenWander extends EntityAIBase
 {
     private EntityCreature entity;
-    private double xPosition;
-    private double yPosition;
-    private double zPosition;
-    private float speed;
-
+    private double         xPosition;
+    private double         yPosition;
+    private double         zPosition;
+    private float          speed;
+    
     public EntityAISkyChickenWander(EntityCreature var1, float var2)
     {
         this.entity = var1;
         this.speed = var2;
         this.setMutexBits(1);
     }
-
+    
     /**
      * Returns whether the EntityAIBase should begin execution.
      */
@@ -40,7 +40,7 @@ public class EntityAISkyChickenWander extends EntityAIBase
         else
         {
             Vec3 var1 = RandomPositionGenerator.findRandomTarget(this.entity, 10, 7);
-
+            
             if (var1 == null)
             {
                 return false;
@@ -54,7 +54,7 @@ public class EntityAISkyChickenWander extends EntityAIBase
             }
         }
     }
-
+    
     /**
      * Returns whether an in-progress EntityAIBase should continue executing
      */
@@ -62,7 +62,7 @@ public class EntityAISkyChickenWander extends EntityAIBase
     {
         return this.entity.riddenByEntity != null ? false : !this.entity.getNavigator().noPath();
     }
-
+    
     /**
      * Execute a one shot task or start executing a continuous task
      */

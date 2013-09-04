@@ -9,19 +9,19 @@ import net.minecraft.client.renderer.texture.IconRegister;
 
 public class BlockStonePlanks extends Block
 {
-
-	public BlockStonePlanks(int par1)
+    
+    public BlockStonePlanks(int par1)
     {
         super(par1, Material.wood);
         this.setCreativeTab(MTJT.tabTreeBlocks);
     }
     
     @Override
-	public void registerIcons(IconRegister par1IconRegister)
-	{
-		this.blockIcon = par1IconRegister.registerIcon("MTJT:stonePlanks");
-	}
-	
+    public void registerIcons(IconRegister par1IconRegister)
+    {
+        this.blockIcon = par1IconRegister.registerIcon("MTJT:stonePlanks");
+    }
+    
     /**
      * Returns the quantity of items to drop on block destruction.
      */
@@ -29,7 +29,7 @@ public class BlockStonePlanks extends Block
     {
         return 1;
     }
-
+    
     /**
      * Returns the ID of the items to drop on destruction.
      */

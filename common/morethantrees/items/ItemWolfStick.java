@@ -6,19 +6,19 @@ import net.minecraft.item.Item;
 
 public class ItemWolfStick extends Item
 {
-
-	public ItemWolfStick(int i)
-	{
-		
-		super(i);
-		this.setCreativeTab(MTJT.tabTreeItems);
-		
-	}
-	
-	@Override
-	public void registerIcons(IconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon("MTJT:wolfStick");
-	}
-	
+    
+    public ItemWolfStick(int i)
+    {
+        
+        super(i);
+        this.setCreativeTab(MTJT.tabTreeItems);
+        
+    }
+    
+    @Override
+    public void registerIcons(IconRegister iconRegister)
+    {
+        itemIcon = iconRegister.registerIcon("MTJT:wolfStick");
+    }
+    
 }

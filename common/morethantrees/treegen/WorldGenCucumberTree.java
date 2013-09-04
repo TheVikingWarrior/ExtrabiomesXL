@@ -9,31 +9,31 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenCucumberTree extends WorldGenerator
 {
-	public boolean generate(World world, Random var2, int i, int j, int k)
-	  {
-	    while ((world.isAirBlock(i + 10, j, k + 12)) && (j > 2))
-	    {
-	      j--;
-	    }
-
-	    int var6 = world.getBlockId(i + 10, j, k + 12);
-
-	    if (var6 != Block.grass.blockID)
-	    {
-	      return false;
-	    }
-
-	    for (int var7 = -2; var7 <= 2; var7++)
-	    {
-	      for (int var8 = -2; var8 <= 2; var8++)
-	      {
-	        if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
-	        {
-	          return false;
-	        }
-	      }
-	    }
-		world.setBlock(i + 3, j + 0, k + 10, MTJT.cucumberLog.blockID, 0, 2);
+    public boolean generate(World world, Random var2, int i, int j, int k)
+    {
+        while ((world.isAirBlock(i + 10, j, k + 12)) && (j > 2))
+        {
+            j--;
+        }
+        
+        int var6 = world.getBlockId(i + 10, j, k + 12);
+        
+        if (var6 != Block.grass.blockID)
+        {
+            return false;
+        }
+        
+        for (int var7 = -2; var7 <= 2; var7++)
+        {
+            for (int var8 = -2; var8 <= 2; var8++)
+            {
+                if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
+                {
+                    return false;
+                }
+            }
+        }
+        world.setBlock(i + 3, j + 0, k + 10, MTJT.cucumberLog.blockID, 0, 2);
         world.setBlock(i + 4, j + 0, k + 10, MTJT.cucumberLog.blockID, 0, 2);
         world.setBlock(i + 4, j + 0, k + 9, MTJT.cucumberLog.blockID, 0, 2);
         world.setBlock(i + 5, j + 0, k + 9, MTJT.cucumberLog.blockID, 0, 2);
@@ -46,7 +46,7 @@ public class WorldGenCucumberTree extends WorldGenerator
         world.setBlock(i + 10, j + 0, k + 6, MTJT.cucumberLog.blockID, 0, 2);
         world.setBlock(i + 11, j + 0, k + 5, MTJT.cucumberLog.blockID, 0, 2);
         
-		world.setBlock(i + 3, j + 1, k + 10, MTJT.cucumberLog.blockID, 0, 2);
+        world.setBlock(i + 3, j + 1, k + 10, MTJT.cucumberLog.blockID, 0, 2);
         world.setBlock(i + 4, j + 1, k + 10, MTJT.cucumberLog.blockID, 0, 2);
         world.setBlock(i + 4, j + 1, k + 9, MTJT.cucumberLog.blockID, 0, 2);
         world.setBlock(i + 5, j + 1, k + 9, MTJT.cucumberLog.blockID, 0, 2);
@@ -271,8 +271,7 @@ public class WorldGenCucumberTree extends WorldGenerator
         world.setBlock(i + 9, j + 10, k + 10, MTJT.cucumberLeaves.blockID, 0, 2);
         world.setBlock(i + 9, j + 10, k + 9, MTJT.cucumberLeaves.blockID, 0, 2);
         world.setBlock(i + 10, j + 10, k + 10, MTJT.cucumberLeaves.blockID, 0, 2);
-
-return true;
-}
+        
+        return true;
+    }
 } /*=====End of Code=====*/
-

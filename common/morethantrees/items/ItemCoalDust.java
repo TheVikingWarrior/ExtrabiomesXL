@@ -6,19 +6,19 @@ import net.minecraft.item.Item;
 
 public class ItemCoalDust extends Item
 {
-
-	public ItemCoalDust(int i)
-	{
-		
-		super(i);
-		this.setCreativeTab(MTJT.tabTreeItems);
-		
-	}
-	
-	@Override
-	public void registerIcons(IconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon("MTJT:coalDust");
-	}
-	
+    
+    public ItemCoalDust(int i)
+    {
+        
+        super(i);
+        this.setCreativeTab(MTJT.tabTreeItems);
+        
+    }
+    
+    @Override
+    public void registerIcons(IconRegister iconRegister)
+    {
+        itemIcon = iconRegister.registerIcon("MTJT:coalDust");
+    }
+    
 }

@@ -6,19 +6,19 @@ import net.minecraft.item.Item;
 
 public class ItemDiamondDust extends Item
 {
-
-	public ItemDiamondDust(int i)
-	{
-		
-		super(i);
-		this.setCreativeTab(MTJT.tabTreeItems);
-		
-	}
-	
-	@Override
-	public void registerIcons(IconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon("MTJT:diamondDust");
-	}
-	
+    
+    public ItemDiamondDust(int i)
+    {
+        
+        super(i);
+        this.setCreativeTab(MTJT.tabTreeItems);
+        
+    }
+    
+    @Override
+    public void registerIcons(IconRegister iconRegister)
+    {
+        itemIcon = iconRegister.registerIcon("MTJT:diamondDust");
+    }
+    
 }

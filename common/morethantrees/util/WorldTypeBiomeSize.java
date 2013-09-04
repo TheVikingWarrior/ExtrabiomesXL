@@ -4,14 +4,13 @@ import morethantrees.MTJT;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.terraingen.WorldTypeEvent;
 
-
-public class WorldTypeBiomeSize 
+public class WorldTypeBiomeSize
 {
-
-	@ForgeSubscribe
+    
+    @ForgeSubscribe
     public void BiomeSize(WorldTypeEvent.BiomeSize var1)
     {
-        var1.newSize = (byte)MTJT.biomeSize;
+        var1.newSize = (byte) MTJT.biomeSize;
     }
-	
+    
 }

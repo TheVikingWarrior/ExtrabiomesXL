@@ -6,19 +6,19 @@ import net.minecraft.item.Item;
 
 public class ItemHardStick extends Item
 {
-
-	public ItemHardStick(int i)
-	{
-		
-		super(i);
-		this.setCreativeTab(MTJT.tabTreeItems);
-		
-	}
-	
-	@Override
-	public void registerIcons(IconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon("MTJT:hardStick");
-	}
-	
+    
+    public ItemHardStick(int i)
+    {
+        
+        super(i);
+        this.setCreativeTab(MTJT.tabTreeItems);
+        
+    }
+    
+    @Override
+    public void registerIcons(IconRegister iconRegister)
+    {
+        itemIcon = iconRegister.registerIcon("MTJT:hardStick");
+    }
+    
 }

@@ -9,28 +9,28 @@ import net.minecraft.world.IBlockAccess;
 
 public class BlockMushroomTopRed extends Block
 {
-	private int baseIndexInPNG;
-    public static final String[] LEAF_TYPES = new String[] {"top"};
-    int[] adjacentTreeBlocks;
-    private Icon[] blockIcon = new Icon[1];
-
+    private int                  baseIndexInPNG;
+    public static final String[] LEAF_TYPES = new String[] { "top" };
+    int[]                        adjacentTreeBlocks;
+    private Icon[]               blockIcon  = new Icon[1];
+    
     public BlockMushroomTopRed(int par1)
     {
         super(par1, Material.leaves);
         this.setTickRandomly(true);
         this.setCreativeTab(MTJT.tabLeaves);
     }
-	
-	/**
-     * When this method is called, your block should register all the icons it needs with the given IconRegister. This
-     * is the only chance you get to register icons.
+    
+    /**
+     * When this method is called, your block should register all the icons it needs with the given IconRegister. This is the only chance
+     * you get to register icons.
      */
     @Override
     public void registerIcons(IconRegister var1)
     {
         this.blockIcon[0] = var1.registerIcon("MTJT:redtop");
     }
-
+    
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
@@ -54,5 +54,5 @@ public class BlockMushroomTopRed extends Block
     {
         return true;
     }
-	
+    
 }

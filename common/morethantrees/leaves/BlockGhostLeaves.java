@@ -15,28 +15,28 @@ import net.minecraft.world.World;
 
 public class BlockGhostLeaves extends Block
 {
-	private int baseIndexInPNG;
-    public static final String[] LEAF_TYPES = new String[] {"ghost"};
-    int[] adjacentTreeBlocks;
-    private Icon[] blockIcon = new Icon[1];
-
+    private int                  baseIndexInPNG;
+    public static final String[] LEAF_TYPES = new String[] { "ghost" };
+    int[]                        adjacentTreeBlocks;
+    private Icon[]               blockIcon  = new Icon[1];
+    
     public BlockGhostLeaves(int par1)
     {
         super(par1, Material.leaves);
         this.setTickRandomly(true);
         this.setCreativeTab(MTJT.tabLeaves);
     }
-	
-	/**
-     * When this method is called, your block should register all the icons it needs with the given IconRegister. This
-     * is the only chance you get to register icons.
+    
+    /**
+     * When this method is called, your block should register all the icons it needs with the given IconRegister. This is the only chance
+     * you get to register icons.
      */
     @Override
     public void registerIcons(IconRegister var1)
     {
         this.blockIcon[0] = var1.registerIcon("MTJT:ghostLeaves");
     }
-
+    
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
@@ -57,12 +57,12 @@ public class BlockGhostLeaves extends Block
     
     public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
     {
-    		 if (par5Entity instanceof EntityLiving) 
-    		 {
-    		 ((EntityLiving) par5Entity).addPotionEffect(new PotionEffect(Potion.confusion.getId(), 100, 1));
-    		 }
+        if (par5Entity instanceof EntityLiving)
+        {
+            ((EntityLiving) par5Entity).addPotionEffect(new PotionEffect(Potion.confusion.getId(), 100, 1));
+        }
     }
-
+    
     //this makes the block render correctly
     public boolean isOpaqueCube()
     {
@@ -73,11 +73,11 @@ public class BlockGhostLeaves extends Block
     {
         return true;
     }
-	
-	public Block setBlockUnbreakable()
+    
+    public Block setBlockUnbreakable()
     {
         this.setHardness(-1.0F);
         return this;
     }
-
+    
 }

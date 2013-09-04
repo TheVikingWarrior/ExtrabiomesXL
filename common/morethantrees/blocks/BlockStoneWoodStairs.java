@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 public class BlockStoneWoodStairs extends BlockStairs
 {
     private final Block modelBlock;
-
+    
     public BlockStoneWoodStairs(int var1, Block var2, int var3)
     {
         super(var1, var2, var3);
@@ -21,10 +21,10 @@ public class BlockStoneWoodStairs extends BlockStairs
     }
     
     @Override
-	public void registerIcons(IconRegister par1IconRegister)
-	{
-		this.blockIcon = par1IconRegister.registerIcon("MTJT:stonePlanks");
-	}
+    public void registerIcons(IconRegister par1IconRegister)
+    {
+        this.blockIcon = par1IconRegister.registerIcon("MTJT:stonePlanks");
+    }
     
     /**
      * Returns the quantity of items to drop on block destruction.
@@ -33,7 +33,7 @@ public class BlockStoneWoodStairs extends BlockStairs
     {
         return 1;
     }
-
+    
     /**
      * Returns the ID of the items to drop on destruction.
      */

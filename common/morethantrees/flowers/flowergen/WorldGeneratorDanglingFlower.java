@@ -22,35 +22,38 @@ public class WorldGeneratorDanglingFlower implements IWorldGenerator
             case -1:
                 this.generateNether(world, random, chunkX * 16, chunkZ * 16);
                 break;
-
+            
             case 0:
                 this.generateSurface(world, random, chunkX * 16, chunkZ * 16);
                 break;
-
+            
             case 1:
                 this.generateEnd(world, random, chunkX * 16, chunkZ * 16);
         }
     }
-    private void generateNether(World var1, Random var2, int var3, int var4) 
-	{
-	
-	}
+    
+    private void generateNether(World var1, Random var2, int var3, int var4)
+    {   
+        
+    }
+    
     private void generateSurface(World var1, Random var2, int var3, int var4)
     {
-    	BiomeGenBase biome = var1.getWorldChunkManager().getBiomeGenAt(var3, var4);
-    	if((biome instanceof BiomeBlackMountains) || (biome instanceof BiomeHardMountains) || (biome instanceof BiomePetrifiedHills) || (biome instanceof BiomeStoneMountains) || (biome instanceof BiomeUnNaturalPlains))
-   	 	{
-    		for(int k = 0; k < 7; k++)
-    		{
-    			int l = var3 + var2.nextInt(16) + 8;
-    			int i1 = var2.nextInt(60);
-    			int j1 = var4 + var2.nextInt(16) + 8;
-    			(new WorldGenDanglingFlower()).generate(var1, var2, l, i1, j1);
-    		}
-   	 	}
+        BiomeGenBase biome = var1.getWorldChunkManager().getBiomeGenAt(var3, var4);
+        if ((biome instanceof BiomeBlackMountains) || (biome instanceof BiomeHardMountains) || (biome instanceof BiomePetrifiedHills) || (biome instanceof BiomeStoneMountains) || (biome instanceof BiomeUnNaturalPlains))
+        {
+            for (int k = 0; k < 7; k++)
+            {
+                int l = var3 + var2.nextInt(16) + 8;
+                int i1 = var2.nextInt(60);
+                int j1 = var4 + var2.nextInt(16) + 8;
+                (new WorldGenDanglingFlower()).generate(var1, var2, l, i1, j1);
+            }
+        }
     }
-    private void generateEnd(World var1, Random var2, int var3, int var4) 
-	{
-	
-	}
+    
+    private void generateEnd(World var1, Random var2, int var3, int var4)
+    {   
+        
+    }
 }

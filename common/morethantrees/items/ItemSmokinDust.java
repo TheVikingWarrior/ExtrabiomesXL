@@ -6,19 +6,19 @@ import net.minecraft.item.Item;
 
 public class ItemSmokinDust extends Item
 {
-
-	public ItemSmokinDust(int i)
-	{
-		
-		super(i);
-		this.setCreativeTab(MTJT.tabTreeItems);
-		
-	}
-	
-	@Override
-	public void registerIcons(IconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon("MTJT:smokinDust");
-	}
-	
+    
+    public ItemSmokinDust(int i)
+    {
+        
+        super(i);
+        this.setCreativeTab(MTJT.tabTreeItems);
+        
+    }
+    
+    @Override
+    public void registerIcons(IconRegister iconRegister)
+    {
+        itemIcon = iconRegister.registerIcon("MTJT:smokinDust");
+    }
+    
 }

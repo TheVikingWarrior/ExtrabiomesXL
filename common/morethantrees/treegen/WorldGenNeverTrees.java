@@ -13,28 +13,28 @@ public class WorldGenNeverTrees extends WorldGenerator
     {
         System.out.println("generating never tree");
         while ((world.isAirBlock(i + 10, j, k + 12)) && (j > 2))
-	    {
-	      j--;
-	    }
-
-	    int var6 = world.getBlockId(i + 10, j, k + 12);
-
-	    if (var6 != Block.netherrack.blockID)
-	    {
-	      return false;
-	    }
-
-	    for (int var7 = -2; var7 <= 2; var7++)
-	    {
-	      for (int var8 = -2; var8 <= 2; var8++)
-	      {
-	        if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
-	        {
-	          return false;
-	        }
-	      }
-	    }
-	    world.setBlock(i + 4, j + 0, k + 4, MTJT.neverLog.blockID, 0, 2);
+        {
+            j--;
+        }
+        
+        int var6 = world.getBlockId(i + 10, j, k + 12);
+        
+        if (var6 != Block.netherrack.blockID)
+        {
+            return false;
+        }
+        
+        for (int var7 = -2; var7 <= 2; var7++)
+        {
+            for (int var8 = -2; var8 <= 2; var8++)
+            {
+                if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
+                {
+                    return false;
+                }
+            }
+        }
+        world.setBlock(i + 4, j + 0, k + 4, MTJT.neverLog.blockID, 0, 2);
         world.setBlock(i + 5, j + 0, k + 4, MTJT.neverLog.blockID, 0, 2);
         world.setBlock(i + 5, j + 0, k + 3, MTJT.neverLog.blockID, 0, 2);
         world.setBlock(i + 6, j + 0, k + 5, MTJT.neverLog.blockID, 0, 2);
@@ -197,7 +197,7 @@ public class WorldGenNeverTrees extends WorldGenerator
         world.setBlock(i + 4, j + 10, k + 6, MTJT.neverLeaves.blockID, 0, 2);
         world.setBlock(i + 4, j + 10, k + 5, MTJT.neverLeaves.blockID, 0, 2);
         world.setBlock(i + 6, j + 10, k + 6, MTJT.neverLeaves.blockID, 0, 2);
-
+        
         return true;
-    }  
+    }
 }

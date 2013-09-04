@@ -19,22 +19,22 @@ import org.lwjgl.input.Keyboard;
 
 public class EntitySkyChicken extends EntityAnimal
 {
-    public boolean field_753_a = false;
-    int jumpTicks;
-    double prevMotionX;
-    double prevMotionZ;
-    boolean shouldSteer;
-    public float field_752_b = 0.0F;
-    public float destPos = 0.0F;
-    public float field_757_d;
-    public float field_756_e;
-    public float field_755_h = 1.0F;
-    public int timeUntilNextEgg;
-    public boolean isGoingUp;
-	public boolean isGoingDown;
-	public boolean isIdle;
+    public boolean                           field_753_a = false;
+    int                                      jumpTicks;
+    double                                   prevMotionX;
+    double                                   prevMotionZ;
+    boolean                                  shouldSteer;
+    public float                             field_752_b = 0.0F;
+    public float                             destPos     = 0.0F;
+    public float                             field_757_d;
+    public float                             field_756_e;
+    public float                             field_755_h = 1.0F;
+    public int                               timeUntilNextEgg;
+    public boolean                           isGoingUp;
+    public boolean                           isGoingDown;
+    public boolean                           isIdle;
     private final EntityAIControlledByPlayer aiControlledByPlayer;
-
+    
     public EntitySkyChicken(World var1)
     {
         super(var1);
@@ -52,7 +52,7 @@ public class EntitySkyChicken extends EntityAnimal
         this.tasks.addTask(6, new EntityAISkyChickenLookIdle(this, this));
         this.tasks.addTask(7, this.aiControlledByPlayer = new EntityAIControlledByPlayer(this, 0.34F));
     }
-
+    
     /**
      * Returns true if the newer Entity AI code should be run
      */
@@ -60,52 +60,52 @@ public class EntitySkyChicken extends EntityAnimal
     {
         return true;
     }
-
+    
     public int getMaxHealth()
     {
         return 10;
     }
-
+    
     /**
-     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-     * use this to react to sunlight and start to burn.
+     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons use this to react to
+     * sunlight and start to burn.
      */
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
         this.field_756_e = this.field_752_b;
         this.field_757_d = this.destPos;
-        this.destPos = (float)((double)this.destPos + (double)(this.onGround ? -1 : 4) * 0.3D);
-
+        this.destPos = (float) ((double) this.destPos + (double) (this.onGround ? -1 : 4) * 0.3D);
+        
         if (this.destPos < 0.0F)
         {
             this.destPos = 0.0F;
         }
-
+        
         if (this.destPos > 1.0F)
         {
             this.destPos = 1.0F;
         }
-
+        
         if (this.riddenByEntity != null)
         {
             this.rotationPitch = 0.0F;
         }
-
+        
         if (!this.onGround && this.field_755_h < 1.0F)
         {
             this.field_755_h = 1.0F;
         }
-
-        this.field_755_h = (float)((double)this.field_755_h * 0.9D);
-
+        
+        this.field_755_h = (float) ((double) this.field_755_h * 0.9D);
+        
         if (!this.onGround && this.motionY < 0.0D)
         {
             this.motionY *= 0.6D;
         }
-
+        
         this.field_752_b += this.field_755_h * 2.0F;
-
+        
         if (!this.isChild() && !this.worldObj.isRemote && --this.timeUntilNextEgg <= 0)
         {
             this.worldObj.playSoundAtEntity(this, "mob.chickenplop", 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
@@ -113,12 +113,13 @@ public class EntitySkyChicken extends EntityAnimal
             this.timeUntilNextEgg = this.rand.nextInt(6000) + 6000;
         }
     }
-
+    
     /**
      * Called when the mob is falling. Calculates and applies fall damage.
      */
-    protected void fall(float var1) {}
-
+    protected void fall(float var1)
+    {}
+    
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
@@ -126,7 +127,7 @@ public class EntitySkyChicken extends EntityAnimal
     {
         super.writeEntityToNBT(var1);
     }
-
+    
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
@@ -134,7 +135,7 @@ public class EntitySkyChicken extends EntityAnimal
     {
         super.readEntityFromNBT(var1);
     }
-
+    
     /**
      * Returns the sound this mob makes while it's alive.
      */
@@ -142,7 +143,7 @@ public class EntitySkyChicken extends EntityAnimal
     {
         return "mob.chicken";
     }
-
+    
     /**
      * Returns the sound this mob makes when it is hurt.
      */
@@ -150,7 +151,7 @@ public class EntitySkyChicken extends EntityAnimal
     {
         return "mob.chickenhurt";
     }
-
+    
     /**
      * Returns the sound this mob makes on death.
      */
@@ -158,7 +159,7 @@ public class EntitySkyChicken extends EntityAnimal
     {
         return "mob.chickenhurt";
     }
-
+    
     /**
      * Returns the item ID for the item the mob drops on death.
      */
@@ -166,19 +167,19 @@ public class EntitySkyChicken extends EntityAnimal
     {
         return Item.feather.itemID;
     }
-
+    
     /**
      * Drop 0-2 items of this living's type
      */
     protected void dropFewItems(boolean var1, int var2)
     {
         int var3 = this.rand.nextInt(3) + this.rand.nextInt(1 + var2);
-
+        
         for (int var4 = 0; var4 < var3; ++var4)
         {
             this.dropItem(Item.feather.itemID, 1);
         }
-
+        
         if (this.isBurning())
         {
             this.dropItem(Item.chickenCooked.itemID, 1);
@@ -188,7 +189,7 @@ public class EntitySkyChicken extends EntityAnimal
             this.dropItem(Item.chickenRaw.itemID, 1);
         }
     }
-
+    
     /**
      * Tries to moves the entity by the passed in displacement. Args: x, y, z
      */
@@ -198,18 +199,18 @@ public class EntitySkyChicken extends EntityAnimal
         {
             boolean var7 = true;
             boolean var8 = false;
-
+            
             if (this.onGround && !var7 && !this.isSprinting() && !this.isInWeb)
             {
                 this.setSprinting(true);
             }
-
+            
             int var9 = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
             float var10 = 1.0F;
-
+            
             if (this.isGoingUp)
             {
-            	this.motionY -= this.riddenByEntity.motionY * 0.04000000000000001D;
+                this.motionY -= this.riddenByEntity.motionY * 0.04000000000000001D;
                 //this.motionX = this.prevMotionX * 1.5D;
                 //this.motionZ = this.prevMotionZ * 1.5D;
                 super.moveEntity(this.motionX, this.motionY, this.motionZ);
@@ -220,7 +221,7 @@ public class EntitySkyChicken extends EntityAnimal
             //{
             //	this.motionY -= this.riddenByEntity.motionY * -0.04000000000000001D;
             //}
-
+            
             if (var9 == Block.ice.blockID)
             {
                 var10 = Block.blocksList[var9].slipperiness * 0.3F;
@@ -233,11 +234,11 @@ public class EntitySkyChicken extends EntityAnimal
             else
             {
                 this.isInWeb = false;
-                this.motionX += this.riddenByEntity.motionX * 7.0D * (double)var10;
-                this.motionZ += this.riddenByEntity.motionZ * 7.0D * (double)var10;
+                this.motionX += this.riddenByEntity.motionX * 7.0D * (double) var10;
+                this.motionZ += this.riddenByEntity.motionZ * 7.0D * (double) var10;
             }
-
-            EntityPlayer var11 = (EntityPlayer)this.riddenByEntity;
+            
+            EntityPlayer var11 = (EntityPlayer) this.riddenByEntity;
             this.rotationYaw = this.prevRotationYaw = var11.rotationYaw;
             this.prevMotionX = this.motionX * 0.6000000000000001D;
             this.prevMotionZ = this.motionZ * 0.6000000000000001D;
@@ -251,32 +252,33 @@ public class EntitySkyChicken extends EntityAnimal
             super.moveEntity(var1, var3, var5);
         }
     }
-
+    
     /**
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
      */
     public boolean interact(EntityPlayer par1EntityPlayer)
     {
-      if (super.interact(par1EntityPlayer))
-      {
-        return true;
-      }
-      if ((!this.worldObj.isRemote) && ((this.riddenByEntity == null) || (this.riddenByEntity == par1EntityPlayer)))
-      {
-        par1EntityPlayer.mountEntity(this);
-        return true;
-      }
-
-      return false;
+        if (super.interact(par1EntityPlayer))
+        {
+            return true;
+        }
+        if ((!this.worldObj.isRemote) && ((this.riddenByEntity == null) || (this.riddenByEntity == par1EntityPlayer)))
+        {
+            par1EntityPlayer.mountEntity(this);
+            return true;
+        }
+        
+        return false;
     }
     
     public EntityAIControlledByPlayer getAIControlledByPlayer()
     {
-      return this.aiControlledByPlayer;
+        return this.aiControlledByPlayer;
     }
-
+    
     @Override
-	public EntityAgeable createChild(EntityAgeable entityageable) {
-		return new EntitySkyChicken(this.worldObj);
-	}
+    public EntityAgeable createChild(EntityAgeable entityageable)
+    {
+        return new EntitySkyChicken(this.worldObj);
+    }
 }

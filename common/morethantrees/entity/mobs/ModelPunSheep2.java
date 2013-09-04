@@ -5,7 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 
 public class ModelPunSheep2 extends ModelQuadruped
 {
-
+    
     public ModelPunSheep2()
     {
         super(12, 0.0F);

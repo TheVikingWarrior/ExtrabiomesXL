@@ -8,25 +8,26 @@ import net.minecraft.util.Icon;
 
 public class BlockMushroomStemmBrown extends Block
 {
-	public static final String[] woodType = new String[] {"stemm"};
+    public static final String[] woodType = new String[] { "stemm" };
+    
     //private Icon[] blockIcon = new Icon[2];
-	
+    
     public BlockMushroomStemmBrown(int par1)
     {
         super(par1, Material.wood);
-		this.setCreativeTab(MTJT.tabWood);
+        this.setCreativeTab(MTJT.tabWood);
     }
-	
-	/**
-     * When this method is called, your block should register all the icons it needs with the given IconRegister. This
-     * is the only chance you get to register icons.
+    
+    /**
+     * When this method is called, your block should register all the icons it needs with the given IconRegister. This is the only chance
+     * you get to register icons.
      */
     public void registerIcons(IconRegister var1)
     {
         //this.blockIcon[0] = var1.registerIcon("MTJT:ghostLogTop");
         this.blockIcon = var1.registerIcon("MTJT:brownside");
     }
-
+    
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
@@ -49,5 +50,5 @@ public class BlockMushroomStemmBrown extends Block
     {
         return false;
     }
-
+    
 }

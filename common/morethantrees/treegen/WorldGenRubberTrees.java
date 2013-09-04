@@ -9,31 +9,31 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenRubberTrees extends WorldGenerator
 {
-	public boolean generate(World world, Random var2, int i, int j, int k)
-	  {
-	    while ((world.isAirBlock(i + 10, j, k + 12)) && (j > 2))
-	    {
-	      j--;
-	    }
-
-	    int var6 = world.getBlockId(i + 10, j, k + 12);
-
-	    if (var6 != Block.grass.blockID && var6 != Block.dirt.blockID)
-	    {
-	      return false;
-	    }
-
-	    for (int var7 = -2; var7 <= 2; var7++)
-	    {
-	      for (int var8 = -2; var8 <= 2; var8++)
-	      {
-	        if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
-	        {
-	          return false;
-	        }
-	      }
-	    }
-    	world.setBlock(i + 9, j + 0, k + 12, MTJT.rubberLog.blockID, 0, 2);
+    public boolean generate(World world, Random var2, int i, int j, int k)
+    {
+        while ((world.isAirBlock(i + 10, j, k + 12)) && (j > 2))
+        {
+            j--;
+        }
+        
+        int var6 = world.getBlockId(i + 10, j, k + 12);
+        
+        if (var6 != Block.grass.blockID && var6 != Block.dirt.blockID)
+        {
+            return false;
+        }
+        
+        for (int var7 = -2; var7 <= 2; var7++)
+        {
+            for (int var8 = -2; var8 <= 2; var8++)
+            {
+                if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
+                {
+                    return false;
+                }
+            }
+        }
+        world.setBlock(i + 9, j + 0, k + 12, MTJT.rubberLog.blockID, 0, 2);
         world.setBlock(i + 10, j + 0, k + 12, MTJT.rubberLog.blockID, 0, 2);
         world.setBlock(i + 10, j + 0, k + 11, MTJT.rubberLog.blockID, 0, 2);
         world.setBlock(i + 11, j + 0, k + 13, MTJT.rubberLog.blockID, 0, 2);
@@ -627,7 +627,7 @@ public class WorldGenRubberTrees extends WorldGenerator
         world.setBlock(i + 12, j + 23, k + 9, MTJT.rubberLeaves.blockID, 0, 2);
         world.setBlock(i + 9, j + 24, k + 10, MTJT.rubberLeaves.blockID, 0, 2);
         world.setBlock(i + 12, j + 24, k + 11, MTJT.rubberLeaves.blockID, 0, 2);
-
-return true;
-}
+        
+        return true;
+    }
 }

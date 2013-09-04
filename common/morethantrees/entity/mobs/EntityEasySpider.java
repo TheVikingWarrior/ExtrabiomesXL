@@ -1,6 +1,5 @@
 package morethantrees.entity.mobs;
 
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -19,13 +18,13 @@ import org.lwjgl.input.Keyboard;
 
 public class EntityEasySpider extends EntityAnimal
 {
-	double prevMotionX;
-    double prevMotionZ;
-    public boolean isForward;
-	public boolean isReverse;
+    double                                   prevMotionX;
+    double                                   prevMotionZ;
+    public boolean                           isForward;
+    public boolean                           isReverse;
     private final EntityAIControlledByPlayer aiControlledByPlayer;
     
-	public EntityEasySpider(World par1World)
+    public EntityEasySpider(World par1World)
     {
         super(par1World);
         this.texture = "/mods/MTJT/textures/mobs/easyspider.png";
@@ -42,46 +41,44 @@ public class EntityEasySpider extends EntityAnimal
     {
         return true;
     }
-
+    
     protected void entityInit()
     {
         super.entityInit();
-        this.dataWatcher.addObject(16, new Byte((byte)0));
+        this.dataWatcher.addObject(16, new Byte((byte) 0));
     }
-	
-	protected void updateAITasks()
+    
+    protected void updateAITasks()
     {
         super.updateAITasks();
     }
-	
-	/**
+    
+    /**
      * Called to update the entity's position/logic.
      */
     public void onUpdate()
     {
         super.onUpdate();
-
+        
         if (!this.worldObj.isRemote)
         {
             this.setBesideClimbableBlock(this.isCollidedHorizontally);
         }
     }
-
+    
     public int getMaxHealth()
     {
         return 16;
     }
-
+    
     /**
      * Returns the Y offset from the entity's position for any entity riding this one.
      */
     public double getMountedYOffset()
     {
-        return (double)this.height * 0.75D - 0.5D;
+        return (double) this.height * 0.75D - 0.5D;
     }
-
     
-
     /**
      * Returns the sound this mob makes while it's alive.
      */
@@ -89,7 +86,7 @@ public class EntityEasySpider extends EntityAnimal
     {
         return "mob.spider.say";
     }
-
+    
     /**
      * Returns the sound this mob makes when it is hurt.
      */
@@ -97,7 +94,7 @@ public class EntityEasySpider extends EntityAnimal
     {
         return "mob.spider.say";
     }
-
+    
     /**
      * Returns the sound this mob makes on death.
      */
@@ -105,7 +102,7 @@ public class EntityEasySpider extends EntityAnimal
     {
         return "mob.spider.death";
     }
-
+    
     /**
      * Plays step sound at given x, y, z for the entity
      */
@@ -113,9 +110,7 @@ public class EntityEasySpider extends EntityAnimal
     {
         this.playSound("mob.spider.step", 0.15F, 1.0F);
     }
-
     
-
     /**
      * Returns the item ID for the item the mob drops on death.
      */
@@ -123,21 +118,21 @@ public class EntityEasySpider extends EntityAnimal
     {
         return Item.silk.itemID;
     }
-
+    
     /**
-     * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param
-     * par2 - Level of Looting used to kill this mob.
+     * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param par2 - Level of
+     * Looting used to kill this mob.
      */
     protected void dropFewItems(boolean par1, int par2)
     {
         super.dropFewItems(par1, par2);
-
+        
         if (par1 && (this.rand.nextInt(3) == 0 || this.rand.nextInt(1 + par2) > 0))
         {
             this.dropItem(Item.spiderEye.itemID, 1);
         }
     }
-
+    
     /**
      * returns true if this entity is by a ladder, false otherwise
      */
@@ -145,14 +140,14 @@ public class EntityEasySpider extends EntityAnimal
     {
         return this.isBesideClimbableBlock();
     }
-
+    
     /**
      * Sets the Entity inside a web block.
      */
-    public void setInWeb() {}
-
+    public void setInWeb()
+    {}
+    
     @SideOnly(Side.CLIENT)
-
     /**
      * How large the spider should be scaled.
      */
@@ -160,7 +155,7 @@ public class EntityEasySpider extends EntityAnimal
     {
         return 1.0F;
     }
-
+    
     /**
      * Get this Entity's EnumCreatureAttribute
      */
@@ -168,7 +163,7 @@ public class EntityEasySpider extends EntityAnimal
     {
         return EnumCreatureAttribute.ARTHROPOD;
     }
-
+    
     /**
      * Returns true if the WatchableObject (Byte) is 0x01 otherwise returns false. The WatchableObject is updated using
      * setBesideClimableBlock.
@@ -177,27 +172,26 @@ public class EntityEasySpider extends EntityAnimal
     {
         return (this.dataWatcher.getWatchableObjectByte(16) & 1) != 0;
     }
-
+    
     /**
-     * Updates the WatchableObject (Byte) created in entityInit(), setting it to 0x01 if par1 is true or 0x00 if it is
-     * false.
+     * Updates the WatchableObject (Byte) created in entityInit(), setting it to 0x01 if par1 is true or 0x00 if it is false.
      */
     public void setBesideClimbableBlock(boolean par1)
     {
         byte var2 = this.dataWatcher.getWatchableObjectByte(16);
-
+        
         if (par1)
         {
-            var2 = (byte)(var2 | 1);
+            var2 = (byte) (var2 | 1);
         }
         else
         {
             var2 &= -2;
         }
-
+        
         this.dataWatcher.updateObject(16, Byte.valueOf(var2));
     }
-
+    
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
@@ -205,7 +199,7 @@ public class EntityEasySpider extends EntityAnimal
     {
         super.writeEntityToNBT(par1NBTTagCompound);
     }
-
+    
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
@@ -223,15 +217,15 @@ public class EntityEasySpider extends EntityAnimal
         {
             boolean var7 = true;
             boolean var8 = false;
-
+            
             if (this.onGround && !var7 && !this.isSprinting() && !this.isInWeb)
             {
                 this.setSprinting(true);
             }
-
+            
             int var9 = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
             float var10 = 1.0F;
-
+            
             if (this.onGround)
             {
                 //this.motionY = 0.1D;
@@ -240,7 +234,7 @@ public class EntityEasySpider extends EntityAnimal
                 super.moveEntity(this.motionX, this.motionY, this.motionZ);
                 //super.jump();
             }
-
+            
             if (var9 == Block.ice.blockID)
             {
                 var10 = Block.blocksList[var9].slipperiness * 0.3F;
@@ -253,11 +247,11 @@ public class EntityEasySpider extends EntityAnimal
             else
             {
                 this.isInWeb = false;
-                this.motionX += this.riddenByEntity.motionX * 7.0D * (double)var10;
-                this.motionZ += this.riddenByEntity.motionZ * 7.0D * (double)var10;
+                this.motionX += this.riddenByEntity.motionX * 7.0D * (double) var10;
+                this.motionZ += this.riddenByEntity.motionZ * 7.0D * (double) var10;
             }
-
-            EntityPlayer var11 = (EntityPlayer)this.riddenByEntity;
+            
+            EntityPlayer var11 = (EntityPlayer) this.riddenByEntity;
             this.rotationYaw = this.prevRotationYaw = var11.rotationYaw;
             this.prevMotionX = this.motionX * 0.6000000000000001D;
             this.prevMotionZ = this.motionZ * 0.6000000000000001D;
@@ -271,7 +265,7 @@ public class EntityEasySpider extends EntityAnimal
             super.moveEntity(var1, var3, var5);
         }
     }
-	
+    
     public boolean interact(EntityPlayer var1)
     {
         if (super.interact(var1))
@@ -291,10 +285,10 @@ public class EntityEasySpider extends EntityAnimal
     
     public EntityAIControlledByPlayer getAIControlledByPlayer()
     {
-      return this.aiControlledByPlayer;
+        return this.aiControlledByPlayer;
     }
-	
-	public EntityAgeable createChild(EntityAgeable par1EntityAgeable)
+    
+    public EntityAgeable createChild(EntityAgeable par1EntityAgeable)
     {
         return null;
     }

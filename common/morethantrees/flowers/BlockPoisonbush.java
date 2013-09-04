@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 public class BlockPoisonbush extends CTFlower
 {
-
+    
     public BlockPoisonbush(int i)
     {
         super(i);
@@ -26,31 +26,31 @@ public class BlockPoisonbush extends CTFlower
     {
         return 1;
     }
-
+    
     // this tells the game what to drop if the block is brocken with an explosion. an example of this would be creeper explosions
     // making stone drop cobblestone. 
     public int idDropped(int par1, Random par2Random, int par3)
     {
         return MTJT.poisonbush.blockID;
     }
-	
-	protected boolean canThisPlantGrowOnThisBlockID(int var1)
+    
+    protected boolean canThisPlantGrowOnThisBlockID(int var1)
     {
         return var1 == Block.grass.blockID || var1 == Block.dirt.blockID || var1 == Block.sand.blockID;//|| var1 == MTJT.planter.blockID;
     }
-
+    
     public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
     {
-        if(entity instanceof EntityPlayer)
+        if (entity instanceof EntityPlayer)
         {
             entity.attackEntityFrom(DamageSource.magic, 5);
         }
     }
-	
-	@Override
-	public void registerIcons(IconRegister par1IconRegister)
-	{
-		this.blockIcon = par1IconRegister.registerIcon("MTJT:poisonbush");
-	}
-
+    
+    @Override
+    public void registerIcons(IconRegister par1IconRegister)
+    {
+        this.blockIcon = par1IconRegister.registerIcon("MTJT:poisonbush");
+    }
+    
 }

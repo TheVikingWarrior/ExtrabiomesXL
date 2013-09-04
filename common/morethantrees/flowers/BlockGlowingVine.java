@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 public class BlockGlowingVine extends BlockVine
 {
-
+    
     public BlockGlowingVine(int i)
     {
         super(i);
@@ -50,7 +50,7 @@ public class BlockGlowingVine extends BlockVine
         float var11 = 0.0F;
         float var12 = 0.0F;
         boolean var13 = var6 > 0;
-
+        
         if ((var6 & 2) != 0)
         {
             var10 = Math.max(var10, 0.0625F);
@@ -61,7 +61,7 @@ public class BlockGlowingVine extends BlockVine
             var12 = 1.0F;
             var13 = true;
         }
-
+        
         if ((var6 & 8) != 0)
         {
             var7 = Math.min(var7, 0.9375F);
@@ -72,7 +72,7 @@ public class BlockGlowingVine extends BlockVine
             var12 = 1.0F;
             var13 = true;
         }
-
+        
         if ((var6 & 4) != 0)
         {
             var12 = Math.max(var12, 0.0625F);
@@ -83,7 +83,7 @@ public class BlockGlowingVine extends BlockVine
             var11 = 1.0F;
             var13 = true;
         }
-
+        
         if ((var6 & 1) != 0)
         {
             var9 = Math.min(var9, 0.9375F);
@@ -94,7 +94,7 @@ public class BlockGlowingVine extends BlockVine
             var11 = 1.0F;
             var13 = true;
         }
-
+        
         if (!var13 && this.canBePlacedOn(par1IBlockAccess.getBlockId(par2, par3 + 1, par4)))
         {
             var8 = Math.min(var8, 0.9375F);
@@ -104,66 +104,67 @@ public class BlockGlowingVine extends BlockVine
             var9 = 0.0F;
             var12 = 1.0F;
         }
-
+        
         this.setBlockBounds(var7, var8, var9, var10, var11, var12);
     }
-
+    
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k)
     {
         return null;
     }
-
+    
     public boolean isOpaqueCube()
     {
         return false;
     }
-
+    
     public boolean renderAsNormalBlock()
     {
         return false;
     }
-
+    
     public int getRenderType()
     {
         return 20;
     }
-
+    
     public boolean canPlaceBlockAt(World world, int i, int j, int k)
     {
         return super.canPlaceBlockAt(world, i, j, k) && canThisPlantGrowOnThisBlockID(world.getBlockId(i, j + 1, k)) && world.getBlockId(i, j - 1, k) == 0;
     }
-
+    
     protected boolean canThisPlantGrowOnThisBlockID(int i)
     {
         return i == Block.stone.blockID;// || i == Block.dirt.blockID || i == Block.grass.blockID;
     }
-
+    
     public void onNeighborBlockChange(World world, int i, int j, int k, int l)
     {
-        if(!canBlockStay(world, i, j, k))
+        if (!canBlockStay(world, i, j, k))
         {
             dropBlockAsItem(world, i, j, k, world.getBlockMetadata(i, j, k), l);
             world.setBlock(i, j, k, 0);
         }
-        if(world.getBlockId(i, j - 1, k) == 0)
+        if (world.getBlockId(i, j - 1, k) == 0)
         {
             dropBlockAsItem(world, i, j - 1, k, world.getBlockMetadata(i, j, k), l);
             world.setBlock(i, j, k, 0);
         }
     }
-
+    
     public boolean canBlockStay(World world, int i, int j, int k)
     {
         return canThisPlantGrowOnThisBlockID(world.getBlockId(i, j + 1, k));
     }
-
+    
     public void onBlockPlacedBy(World world, int i, int j, int k, EntityLiving entityliving)
     {
-        if(world.getBlockId(i, j - 1, k) == 0)
+        if (world.getBlockId(i, j - 1, k) == 0)
         {
             world.setBlock(i, j - 1, k, MTJT.glowingVine.blockID);
         }
     }
+    
     /**
      * Returns the quantity of items to drop on block destruction.
      */
@@ -171,7 +172,7 @@ public class BlockGlowingVine extends BlockVine
     {
         return 1;
     }
-
+    
     /**
      * Returns the ID of the items to drop on destruction.
      */
@@ -179,11 +180,11 @@ public class BlockGlowingVine extends BlockVine
     {
         return MTJT.glowingVine.blockID;
     }
-	
-	@Override
-	public void registerIcons(IconRegister par1IconRegister)
-	{
-		this.blockIcon = par1IconRegister.registerIcon("MTJT:glowingvine");
-	}
-	
+    
+    @Override
+    public void registerIcons(IconRegister par1IconRegister)
+    {
+        this.blockIcon = par1IconRegister.registerIcon("MTJT:glowingvine");
+    }
+    
 }

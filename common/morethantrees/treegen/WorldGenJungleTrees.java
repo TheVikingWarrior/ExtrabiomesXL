@@ -8,30 +8,30 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenJungleTrees extends WorldGenerator
 {
-	public boolean generate(World world, Random rand, int i, int j, int k)
-	  {
-	    while ((world.isAirBlock(i + 10, j, k + 12)) && (j > 2))
-	    {
-	      j--;
-	    }
-
-	    int var6 = world.getBlockId(i + 10, j, k + 12);
-
-	    if (var6 != Block.grass.blockID)
-	    {
-	      return false;
-	    }
-
-	    for (int var7 = -2; var7 <= 2; var7++)
-	    {
-	      for (int var8 = -2; var8 <= 2; var8++)
-	      {
-	        if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
-	        {
-	          return false;
-	        }
-	      }
-	    }
+    public boolean generate(World world, Random rand, int i, int j, int k)
+    {
+        while ((world.isAirBlock(i + 10, j, k + 12)) && (j > 2))
+        {
+            j--;
+        }
+        
+        int var6 = world.getBlockId(i + 10, j, k + 12);
+        
+        if (var6 != Block.grass.blockID)
+        {
+            return false;
+        }
+        
+        for (int var7 = -2; var7 <= 2; var7++)
+        {
+            for (int var8 = -2; var8 <= 2; var8++)
+            {
+                if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
+                {
+                    return false;
+                }
+            }
+        }
         world.setBlock(i + 7, j + 0, k + 8, 17, 3, 2);
         world.setBlock(i + 8, j + 0, k + 25, 17, 3, 2);
         world.setBlock(i + 8, j + 0, k + 24, 17, 3, 2);
@@ -357,12 +357,13 @@ public class WorldGenJungleTrees extends WorldGenerator
         world.setBlock(i + 20, j + 2, k + 15, 17, 3, 2);
         world.setBlock(i + 13, j + 3, k + 20, 17, 3, 2);
         world.setBlock(i + 13, j + 3, k + 19, 17, 3, 2);
-
-generate2(world, rand, i, j, k);
-return true;
-}
-public boolean generate2(World world, Random rand, int i, int j, int k)
-{
+        
+        generate2(world, rand, i, j, k);
+        return true;
+    }
+    
+    public boolean generate2(World world, Random rand, int i, int j, int k)
+    {
         world.setBlock(i + 13, j + 3, k + 18, 17, 3, 2);
         world.setBlock(i + 13, j + 3, k + 17, 17, 3, 2);
         world.setBlock(i + 13, j + 3, k + 16, 17, 3, 2);
@@ -1818,12 +1819,13 @@ public boolean generate2(World world, Random rand, int i, int j, int k)
         world.setBlock(i + 2, j + 47, k + 17, 18, 3, 2);
         world.setBlock(i + 2, j + 47, k + 16, 18, 3, 2);
         world.setBlock(i + 2, j + 47, k + 15, 18, 3, 2);
-
-generate3(world, rand, i, j, k);
-return true;
-}
-public boolean generate3(World world, Random rand, int i, int j, int k)
-{
+        
+        generate3(world, rand, i, j, k);
+        return true;
+    }
+    
+    public boolean generate3(World world, Random rand, int i, int j, int k)
+    {
         world.setBlock(i + 2, j + 47, k + 14, 18, 3, 2);
         world.setBlock(i + 2, j + 47, k + 13, 18, 3, 2);
         world.setBlock(i + 3, j + 47, k + 27, 18, 3, 2);
@@ -3324,12 +3326,13 @@ public boolean generate3(World world, Random rand, int i, int j, int k)
         world.setBlock(i + 2, j + 50, k + 19, 18, 3, 2);
         world.setBlock(i + 2, j + 50, k + 18, 18, 3, 2);
         world.setBlock(i + 2, j + 50, k + 17, 18, 3, 2);
-
-generate4(world, rand, i, j, k);
-return true;
-}
-public boolean generate4(World world, Random rand, int i, int j, int k)
-{
+        
+        generate4(world, rand, i, j, k);
+        return true;
+    }
+    
+    public boolean generate4(World world, Random rand, int i, int j, int k)
+    {
         world.setBlock(i + 2, j + 50, k + 16, 18, 3, 2);
         world.setBlock(i + 2, j + 50, k + 15, 18, 3, 2);
         world.setBlock(i + 2, j + 50, k + 14, 18, 3, 2);
@@ -4830,12 +4833,13 @@ public boolean generate4(World world, Random rand, int i, int j, int k)
         world.setBlock(i + 23, j + 51, k + 23, 18, 3, 2);
         world.setBlock(i + 23, j + 51, k + 22, 18, 3, 2);
         world.setBlock(i + 23, j + 51, k + 21, 18, 3, 2);
-
-generate5(world, rand, i, j, k);
-return true;
-}
-public boolean generate5(World world, Random rand, int i, int j, int k)
-{
+        
+        generate5(world, rand, i, j, k);
+        return true;
+    }
+    
+    public boolean generate5(World world, Random rand, int i, int j, int k)
+    {
         world.setBlock(i + 23, j + 51, k + 20, 18, 3, 2);
         world.setBlock(i + 23, j + 51, k + 19, 18, 3, 2);
         world.setBlock(i + 23, j + 51, k + 18, 18, 3, 2);
@@ -6056,7 +6060,7 @@ public boolean generate5(World world, Random rand, int i, int j, int k)
         world.setBlock(i + 28, j + 53, k + 18, 18, 3, 2);
         world.setBlock(i + 28, j + 53, k + 17, 18, 3, 2);
         world.setBlock(i + 28, j + 53, k + 16, 18, 3, 2);
-
-return true;
-}
+        
+        return true;
+    }
 }

@@ -9,31 +9,31 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenNetherTrees extends WorldGenerator
 {
-	public boolean generate(World world, Random var2, int i, int j, int k)
-	  {
-		System.out.println("generating nether tree");
-		while ((world.isAirBlock(i + 10, j, k + 12)) && (j > 2))
-	    {
-	      j--;
-	    }
-
-	    int var6 = world.getBlockId(i + 10, j, k + 12);
-	    if (var6 != Block.netherrack.blockID && var6 != Block.slowSand.blockID)
-	    {
-	      return false;
-	    }
-
-	    for (int var7 = -2; var7 <= 2; var7++)
-	    {
-	      for (int var8 = -2; var8 <= 2; var8++)
-	      {
-	        if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
-	        {
-	          return false;
-	        }
-	      }
-	    }
-	    world.setBlock(i + 5, j + 0, k + 6, MTJT.netherLog.blockID, 0, 2);
+    public boolean generate(World world, Random var2, int i, int j, int k)
+    {
+        System.out.println("generating nether tree");
+        while ((world.isAirBlock(i + 10, j, k + 12)) && (j > 2))
+        {
+            j--;
+        }
+        
+        int var6 = world.getBlockId(i + 10, j, k + 12);
+        if (var6 != Block.netherrack.blockID && var6 != Block.slowSand.blockID)
+        {
+            return false;
+        }
+        
+        for (int var7 = -2; var7 <= 2; var7++)
+        {
+            for (int var8 = -2; var8 <= 2; var8++)
+            {
+                if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
+                {
+                    return false;
+                }
+            }
+        }
+        world.setBlock(i + 5, j + 0, k + 6, MTJT.netherLog.blockID, 0, 2);
         world.setBlock(i + 5, j + 1, k + 6, MTJT.netherLog.blockID, 0, 2);
         //world.setBlock(i + 4, j + 2, k + 6, 127);
         world.setBlock(i + 4, j + 2, k + 5, MTJT.netherLeaves.blockID, 0, 2);
@@ -150,6 +150,6 @@ public class WorldGenNetherTrees extends WorldGenerator
         world.setBlock(i + 9, j + 7, k + 7, MTJT.netherLeaves.blockID, 0, 2);
         world.setBlock(i + 8, j + 8, k + 6, MTJT.netherLeaves.blockID, 0, 2);
         world.setBlock(i + 8, j + 8, k + 5, MTJT.netherLeaves.blockID, 0, 2);
-         return true;
-		}
+        return true;
+    }
 }

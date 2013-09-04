@@ -9,31 +9,31 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenSoftTrees extends WorldGenerator
 {
-	public boolean generate(World world, Random var2, int i, int j, int k)
-	  {
-	    while ((world.isAirBlock(i + 10, j, k + 12)) && (j > 2))
-	    {
-	      j--;
-	    }
-
-	    int var6 = world.getBlockId(i + 10, j, k + 12);
-
-	    if (var6 != Block.grass.blockID)
-	    {
-	      return false;
-	    }
-
-	    for (int var7 = -2; var7 <= 2; var7++)
-	    {
-	      for (int var8 = -2; var8 <= 2; var8++)
-	      {
-	        if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
-	        {
-	          return false;
-	        }
-	      }
-	    }
-	    world.setBlock(i + 4, j + 0, k + 5, MTJT.softLog.blockID, 0, 2);
+    public boolean generate(World world, Random var2, int i, int j, int k)
+    {
+        while ((world.isAirBlock(i + 10, j, k + 12)) && (j > 2))
+        {
+            j--;
+        }
+        
+        int var6 = world.getBlockId(i + 10, j, k + 12);
+        
+        if (var6 != Block.grass.blockID)
+        {
+            return false;
+        }
+        
+        for (int var7 = -2; var7 <= 2; var7++)
+        {
+            for (int var8 = -2; var8 <= 2; var8++)
+            {
+                if ((world.isAirBlock(i + var7 + 10, j - 1, k + var8 + 12)) && (world.isAirBlock(i + var7 + 10, j - 2, k + var8 + 12)))
+                {
+                    return false;
+                }
+            }
+        }
+        world.setBlock(i + 4, j + 0, k + 5, MTJT.softLog.blockID, 0, 2);
         world.setBlock(i + 4, j + 1, k + 5, MTJT.softLog.blockID, 0, 2);
         world.setBlock(i + 2, j + 2, k + 5, MTJT.softLeaves.blockID, 0, 2);
         world.setBlock(i + 2, j + 2, k + 4, MTJT.softLeaves.blockID, 0, 2);
@@ -259,7 +259,7 @@ public class WorldGenSoftTrees extends WorldGenerator
         world.setBlock(i + 6, j + 11, k + 4, MTJT.softLeaves.blockID, 0, 2);
         world.setBlock(i + 6, j + 11, k + 3, MTJT.softLeaves.blockID, 0, 2);
         world.setBlock(i + 7, j + 11, k + 6, MTJT.softLeaves.blockID, 0, 2);
-
-return true;
-}  
+        
+        return true;
+    }
 }

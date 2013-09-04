@@ -9,28 +9,28 @@ import net.minecraft.world.IBlockAccess;
 
 public class BlockNeverLeaves extends Block
 {
-	private int baseIndexInPNG;
-    public static final String[] LEAF_TYPES = {"neverLeaves"};
-    int[] adjacentTreeBlocks;
-    private Icon[] blockIcon = new Icon[1];
-
+    private int                  baseIndexInPNG;
+    public static final String[] LEAF_TYPES = { "neverLeaves" };
+    int[]                        adjacentTreeBlocks;
+    private Icon[]               blockIcon  = new Icon[1];
+    
     public BlockNeverLeaves(int par1)
     {
         super(par1, Material.leaves);
         this.setTickRandomly(true);
         this.setCreativeTab(MTJT.tabLeaves);
     }
-	
-	/**
-     * When this method is called, your block should register all the icons it needs with the given IconRegister. This
-     * is the only chance you get to register icons.
+    
+    /**
+     * When this method is called, your block should register all the icons it needs with the given IconRegister. This is the only chance
+     * you get to register icons.
      */
     @Override
     public void registerIcons(IconRegister var1)
     {
         this.blockIcon[0] = var1.registerIcon("MTJT:neverLeaves");
     }
-
+    
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
@@ -38,7 +38,7 @@ public class BlockNeverLeaves extends Block
     {
         return this.blockIcon[0];
     }
-
+    
     //this makes the block render correctly
     public boolean isOpaqueCube()
     {
@@ -49,7 +49,7 @@ public class BlockNeverLeaves extends Block
     {
         return true;
     }
-
+    
     public Block setBlockUnbreakable()
     {
         this.setHardness(-1.0F);
@@ -57,5 +57,3 @@ public class BlockNeverLeaves extends Block
     }
     
 }
-
-

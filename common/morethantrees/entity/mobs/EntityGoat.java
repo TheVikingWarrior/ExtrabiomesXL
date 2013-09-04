@@ -33,7 +33,7 @@ public class EntityGoat extends EntityTameable
      * The tempt AI task for this mob, used to prevent taming while it is fleeing.
      */
     private EntityAITempt aiTempt;
-
+    
     public EntityGoat(World par1World)
     {
         super(par1World);
@@ -51,13 +51,13 @@ public class EntityGoat extends EntityTameable
         this.tasks.addTask(11, new EntityAIWatchClosest(this, EntityPlayer.class, 10.0F));
         this.targetTasks.addTask(1, new EntityAITargetNonTamed(this, EntityChicken.class, 14.0F, 750, false));
     }
-
+    
     protected void entityInit()
     {
         super.entityInit();
-        this.dataWatcher.addObject(18, Byte.valueOf((byte)0));
+        this.dataWatcher.addObject(18, Byte.valueOf((byte) 0));
     }
-
+    
     /**
      * main AI tick function, replaces updateEntityActionState
      */
@@ -66,7 +66,7 @@ public class EntityGoat extends EntityTameable
         if (this.getMoveHelper().isUpdating())
         {
             float var1 = this.getMoveHelper().getSpeed();
-
+            
             if (var1 == 0.18F)
             {
                 this.setSneaking(true);
@@ -89,7 +89,7 @@ public class EntityGoat extends EntityTameable
             this.setSprinting(false);
         }
     }
-
+    
     /**
      * Determines if an entity can be despawned, used on idle far away entities
      */
@@ -97,9 +97,8 @@ public class EntityGoat extends EntityTameable
     {
         return !this.isTamed();
     }
-
+    
     @SideOnly(Side.CLIENT)
-
     /**
      * Returns the texture's file path as a String.
      */
@@ -119,7 +118,7 @@ public class EntityGoat extends EntityTameable
                 return super.getTexture();
         }
     }
-
+    
     /**
      * Returns true if the newer Entity AI code should be run
      */
@@ -127,17 +126,18 @@ public class EntityGoat extends EntityTameable
     {
         return true;
     }
-
+    
     public int getMaxHealth()
     {
         return 10;
     }
-
+    
     /**
      * Called when the mob is falling. Calculates and applies fall damage.
      */
-    protected void fall(float par1) {}
-
+    protected void fall(float par1)
+    {}
+    
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
@@ -146,7 +146,7 @@ public class EntityGoat extends EntityTameable
         super.writeEntityToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setInteger("CatType", this.getTameSkin());
     }
-
+    
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
@@ -155,7 +155,7 @@ public class EntityGoat extends EntityTameable
         super.readEntityFromNBT(par1NBTTagCompound);
         this.setTameSkin(par1NBTTagCompound.getInteger("CatType"));
     }
-
+    
     /**
      * Returns the sound this mob makes while it's alive.
      */
@@ -163,7 +163,7 @@ public class EntityGoat extends EntityTameable
     {
         return this.isTamed() ? (this.isInLove() ? "mob.cat.purr" : (this.rand.nextInt(4) == 0 ? "mob.cat.purreow" : "mob.cat.meow")) : "";
     }
-
+    
     /**
      * Returns the sound this mob makes when it is hurt.
      */
@@ -171,7 +171,7 @@ public class EntityGoat extends EntityTameable
     {
         return "mob.cat.hitt";
     }
-
+    
     /**
      * Returns the sound this mob makes on death.
      */
@@ -179,7 +179,7 @@ public class EntityGoat extends EntityTameable
     {
         return "mob.cat.hitt";
     }
-
+    
     /**
      * Returns the volume for the sounds this mob makes.
      */
@@ -187,7 +187,7 @@ public class EntityGoat extends EntityTameable
     {
         return 0.4F;
     }
-
+    
     /**
      * Returns the item ID for the item the mob drops on death.
      */
@@ -195,12 +195,12 @@ public class EntityGoat extends EntityTameable
     {
         return Item.leather.itemID;
     }
-
+    
     public boolean attackEntityAsMob(Entity par1Entity)
     {
         return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 3);
     }
-
+    
     /**
      * Called when the entity is attacked.
      */
@@ -216,20 +216,21 @@ public class EntityGoat extends EntityTameable
             return super.attackEntityFrom(par1DamageSource, par2);
         }
     }
-
+    
     /**
-     * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param
-     * par2 - Level of Looting used to kill this mob.
+     * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param par2 - Level of
+     * Looting used to kill this mob.
      */
-    protected void dropFewItems(boolean par1, int par2) {}
-
+    protected void dropFewItems(boolean par1, int par2)
+    {}
+    
     /**
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
      */
     public boolean interact(EntityPlayer par1EntityPlayer)
     {
         ItemStack var2 = par1EntityPlayer.inventory.getCurrentItem();
-
+        
         if (this.isTamed())
         {
             if (par1EntityPlayer.username.equalsIgnoreCase(this.getOwnerName()) && !this.worldObj.isRemote && !this.isBreedingItem(var2))
@@ -243,12 +244,12 @@ public class EntityGoat extends EntityTameable
             {
                 --var2.stackSize;
             }
-
+            
             if (var2.stackSize <= 0)
             {
-                par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, (ItemStack)null);
+                par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, (ItemStack) null);
             }
-
+            
             if (!this.worldObj.isRemote)
             {
                 if (this.rand.nextInt(3) == 0)
@@ -258,47 +259,46 @@ public class EntityGoat extends EntityTameable
                     this.setOwner(par1EntityPlayer.username);
                     this.playTameEffect(true);
                     this.aiSit.setSitting(true);
-                    this.worldObj.setEntityState(this, (byte)7);
+                    this.worldObj.setEntityState(this, (byte) 7);
                 }
                 else
                 {
                     this.playTameEffect(false);
-                    this.worldObj.setEntityState(this, (byte)6);
+                    this.worldObj.setEntityState(this, (byte) 6);
                 }
             }
-
+            
             return true;
         }
-
+        
         return super.interact(par1EntityPlayer);
     }
-
+    
     /**
      * This function is used when two same-species animals in 'love mode' breed to generate the new baby animal.
      */
     public EntityGoat spawnBabyAnimal(EntityAgeable par1EntityAgeable)
     {
         EntityGoat var2 = new EntityGoat(this.worldObj);
-
+        
         if (this.isTamed())
         {
             var2.setOwner(this.getOwnerName());
             var2.setTamed(true);
             var2.setTameSkin(this.getTameSkin());
         }
-
+        
         return var2;
     }
-
+    
     /**
-     * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
-     * the animal type)
+     * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on the animal type)
      */
     public boolean isBreedingItem(ItemStack par1ItemStack)
     {
         return par1ItemStack != null && par1ItemStack.itemID == Item.fishRaw.itemID;
     }
-
+    
     /**
      * Returns true if the mob is currently able to mate with the specified mob.
      */
@@ -318,21 +318,21 @@ public class EntityGoat extends EntityTameable
         }
         else
         {
-            EntityGoat var2 = (EntityGoat)par1EntityAnimal;
+            EntityGoat var2 = (EntityGoat) par1EntityAnimal;
             return !var2.isTamed() ? false : this.isInLove() && var2.isInLove();
         }
     }
-
+    
     public int getTameSkin()
     {
         return this.dataWatcher.getWatchableObjectByte(18);
     }
-
+    
     public void setTameSkin(int par1)
     {
-        this.dataWatcher.updateObject(18, Byte.valueOf((byte)par1));
+        this.dataWatcher.updateObject(18, Byte.valueOf((byte) par1));
     }
-
+    
     /**
      * Checks if the entity's current position is a valid location to spawn this entity.
      */
@@ -349,25 +349,25 @@ public class EntityGoat extends EntityTameable
                 int var1 = MathHelper.floor_double(this.posX);
                 int var2 = MathHelper.floor_double(this.boundingBox.minY);
                 int var3 = MathHelper.floor_double(this.posZ);
-
+                
                 if (var2 < 63)
                 {
                     return false;
                 }
-
+                
                 int var4 = this.worldObj.getBlockId(var1, var2 - 1, var3);
                 Block block = Block.blocksList[var4];
-
+                
                 if (var4 == Block.grass.blockID || (block != null && block.isLeaves(worldObj, var1, var2 - 1, var3)))
                 {
                     return true;
                 }
             }
-
+            
             return false;
         }
     }
-
+    
     /**
      * Gets the username of the entity.
      */
@@ -375,7 +375,7 @@ public class EntityGoat extends EntityTameable
     {
         return this.isTamed() ? "entity.Cat.name" : super.getEntityName();
     }
-
+    
     /**
      * Initialize this creature.
      */
@@ -392,7 +392,7 @@ public class EntityGoat extends EntityTameable
             }
         }
     }
-
+    
     public EntityAgeable createChild(EntityAgeable par1EntityAgeable)
     {
         return this.spawnBabyAnimal(par1EntityAgeable);

@@ -6,19 +6,19 @@ import net.minecraft.item.Item;
 
 public class ItemEggPaper extends Item
 {
-
-	public ItemEggPaper(int i)
-	{
-		
-		super(i);
-		this.setCreativeTab(MTJT.tabTreeItems);
-		
-	}
-	
-	@Override
-	public void registerIcons(IconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon("MTJT:eggPaper");
-	}
-	
+    
+    public ItemEggPaper(int i)
+    {
+        
+        super(i);
+        this.setCreativeTab(MTJT.tabTreeItems);
+        
+    }
+    
+    @Override
+    public void registerIcons(IconRegister iconRegister)
+    {
+        itemIcon = iconRegister.registerIcon("MTJT:eggPaper");
+    }
+    
 }

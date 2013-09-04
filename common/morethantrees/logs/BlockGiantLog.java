@@ -30,6 +30,7 @@ public class BlockGiantLog extends Block
      * When this method is called, your block should register all the icons it needs with the given IconRegister. This is the only chance
      * you get to register icons.
      */
+    @Override
     public void registerIcons(IconRegister var1)
     {
         this.blockIcon[0] = var1.registerIcon("MTJT:giantLogTop");
@@ -39,28 +40,33 @@ public class BlockGiantLog extends Block
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
+    @Override
     public Icon getIcon(int var1, int var2)
     {
         return var1 != 0 && var1 != 1 ? this.blockIcon[1] : this.blockIcon[0];
     }
     
-    // this sets how the block is rendered. i recomend keeping it at 31. 
+    // this sets how the block is rendered. i recommend keeping it at 31. 
+    @Override
     public int getRenderType()
     {
         return 31;
     }
     
+    @Override
     public boolean isOpaqueCube()
     {
         return true;
     }
     
+    @Override
     public boolean renderAsNormalBlock()
     {
         return false;
     }
     
     // this sets the amount droped when broken.
+    @Override
     public int quantityDropped(Random par1Random)
     {
         return 1;
@@ -68,12 +74,14 @@ public class BlockGiantLog extends Block
     
     // this tells the game what to drop if the block is brocken with an explosion. an example of this would be creeper explosions
     // making stone drop cobblestone. 
+    @Override
     public int idDropped(int par1, Random par2Random, int par3)
     {
         return MTJT.giantLog.blockID;
     }
     
     // this essentially helps leaves to decay when they are not conected to wood. 
+    @Override
     public void breakBlock(World var1, int var2, int var3, int var4, int var5, int var6)
     {
         byte var7 = 4;
@@ -129,6 +137,7 @@ public class BlockGiantLog extends Block
     }
     
     //this can be ignored
+    @Override
     public int damageDropped(int par1)
     {
         return par1 & 3;
@@ -140,6 +149,7 @@ public class BlockGiantLog extends Block
         return par0 & 3;
     }
     
+    @Override
     @SideOnly(Side.CLIENT)
     // i dont think this is needed however i kept it. this adds metadata blocks to the creative inventory. as you can see this
     // one will only add the first metablock
@@ -150,6 +160,7 @@ public class BlockGiantLog extends Block
     }
     
     //best to just ignore this
+    @Override
     protected ItemStack createStackedBlock(int par1)
     {
         return new ItemStack(this.blockID, 1, limitToValidMetadata(par1));

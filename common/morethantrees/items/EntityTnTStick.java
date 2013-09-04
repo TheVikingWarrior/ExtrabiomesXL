@@ -2,6 +2,7 @@ package morethantrees.items;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
@@ -18,7 +19,7 @@ public class EntityTnTStick extends EntityThrowable
         super(var1);
     }
     
-    public EntityTnTStick(World var1, EntityLiving var2)
+    public EntityTnTStick(World var1, EntityLivingBase var2)
     {
         super(var1, var2);
     }
@@ -31,6 +32,7 @@ public class EntityTnTStick extends EntityThrowable
     /**
      * Called when this EntityThrowable hits a block or entity.
      */
+    @Override
     protected void onImpact(MovingObjectPosition var1)
     {
         if (var1.entityHit != null)
@@ -61,7 +63,7 @@ public class EntityTnTStick extends EntityThrowable
     
     public String getTextureFile()
     {
-        return "/mods/MTJT/textures/items/tntStick.png";
+        return "/assets/mtjt/textures/items/tntStick.png";
     }
     
 }

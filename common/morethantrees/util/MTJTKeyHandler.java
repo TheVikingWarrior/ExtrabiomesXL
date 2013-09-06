@@ -2,11 +2,7 @@ package morethantrees.util;
 
 import java.util.EnumSet;
 
-import morethantrees.MTJT;
-import morethantrees.entity.mobs.EntitySkyChicken;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.Entity;
 import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
 import cpw.mods.fml.common.TickType;
 
@@ -21,67 +17,67 @@ public class MTJTKeyHandler extends KeyHandler
     @Override
     public void keyDown(EnumSet<TickType> es, KeyBinding kb, boolean bln, boolean bln1)
     {
-        Minecraft client = Minecraft.getMinecraft();
-        if (client != null && client.thePlayer != null)
-        {
-            Entity ent = client.thePlayer.ridingEntity;
-            if (ent != null && ent instanceof EntitySkyChicken)
-            {
-                if (kb.keyDescription == "GoUp")
-                {
-                    MTJT.instance.proxy.sendPacket(1, ent.riddenByEntity);
-                }
-                else if (kb.keyDescription == "GoDown")
-                {
-                    MTJT.instance.proxy.sendPacket(2, ent.riddenByEntity);
-                }
-                else if (kb.keyDescription == "Idle")
-                {
-                    MTJT.instance.proxy.sendPacket(3, ent.riddenByEntity);
-                }
-                else if (kb.keyDescription == "Forward")
-                {
-                    MTJT.instance.proxy.sendPacket(4, ent.riddenByEntity);
-                }
-                else if (kb.keyDescription == "Reverse")
-                {
-                    MTJT.instance.proxy.sendPacket(5, ent.riddenByEntity);
-                }
-            }
-        }
+        //        Minecraft client = Minecraft.getMinecraft();
+        //        if (client != null && client.thePlayer != null)
+        //        {
+        //            Entity ent = client.thePlayer.ridingEntity;
+        //            if (ent != null && ent instanceof EntitySkyChicken)
+        //            {
+        //                if (kb.keyDescription == "GoUp")
+        //                {
+        //                    MTJT.instance.proxy.sendPacket(1, ent.riddenByEntity);
+        //                }
+        //                else if (kb.keyDescription == "GoDown")
+        //                {
+        //                    MTJT.instance.proxy.sendPacket(2, ent.riddenByEntity);
+        //                }
+        //                else if (kb.keyDescription == "Idle")
+        //                {
+        //                    MTJT.instance.proxy.sendPacket(3, ent.riddenByEntity);
+        //                }
+        //                else if (kb.keyDescription == "Forward")
+        //                {
+        //                    MTJT.instance.proxy.sendPacket(4, ent.riddenByEntity);
+        //                }
+        //                else if (kb.keyDescription == "Reverse")
+        //                {
+        //                    MTJT.instance.proxy.sendPacket(5, ent.riddenByEntity);
+        //                }
+        //            }
+        //        }
     }
     
     @Override
     public void keyUp(EnumSet<TickType> es, KeyBinding kb, boolean bln)
     {
-        Minecraft client = Minecraft.getMinecraft();
-        if (client != null && client.thePlayer != null)
-        {
-            Entity ent = client.thePlayer.ridingEntity;
-            if (ent != null && ent instanceof EntitySkyChicken)
-            {
-                if (kb.keyDescription == "GoUp")
-                {
-                    MTJT.instance.proxy.sendPacket(6, ent.riddenByEntity);
-                }
-                else if (kb.keyDescription == "GoDown")
-                {
-                    MTJT.instance.proxy.sendPacket(7, ent.riddenByEntity);
-                }
-                else if (kb.keyDescription == "Idle")
-                {
-                    MTJT.instance.proxy.sendPacket(8, ent.riddenByEntity);
-                }
-                else if (kb.keyDescription == "Forward")
-                {
-                    MTJT.instance.proxy.sendPacket(9, ent.riddenByEntity);
-                }
-                else if (kb.keyDescription == "Reverse")
-                {
-                    MTJT.instance.proxy.sendPacket(10, ent.riddenByEntity);
-                }
-            }
-        }
+        //        Minecraft client = Minecraft.getMinecraft();
+        //        if (client != null && client.thePlayer != null)
+        //        {
+        //            Entity ent = client.thePlayer.ridingEntity;
+        //            if (ent != null && ent instanceof EntitySkyChicken)
+        //            {
+        //                if (kb.keyDescription == "GoUp")
+        //                {
+        //                    MTJT.instance.proxy.sendPacket(6, ent.riddenByEntity);
+        //                }
+        //                else if (kb.keyDescription == "GoDown")
+        //                {
+        //                    MTJT.instance.proxy.sendPacket(7, ent.riddenByEntity);
+        //                }
+        //                else if (kb.keyDescription == "Idle")
+        //                {
+        //                    MTJT.instance.proxy.sendPacket(8, ent.riddenByEntity);
+        //                }
+        //                else if (kb.keyDescription == "Forward")
+        //                {
+        //                    MTJT.instance.proxy.sendPacket(9, ent.riddenByEntity);
+        //                }
+        //                else if (kb.keyDescription == "Reverse")
+        //                {
+        //                    MTJT.instance.proxy.sendPacket(10, ent.riddenByEntity);
+        //                }
+        //            }
+        //        }
     }
     
     @Override

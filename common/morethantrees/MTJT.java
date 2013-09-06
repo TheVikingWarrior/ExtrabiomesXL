@@ -67,13 +67,6 @@ import morethantrees.blocks.BlockWolfPlanks;
 import morethantrees.blocks.BlockWolfWoodSlab;
 import morethantrees.blocks.BlockWolfWoodStairs;
 import morethantrees.entity.EntityFireBalls;
-import morethantrees.entity.mobs.EntityBlueCow;
-import morethantrees.entity.mobs.EntityEasySpider;
-import morethantrees.entity.mobs.EntityGoat;
-import morethantrees.entity.mobs.EntityPunSheep;
-import morethantrees.entity.mobs.EntitySkyChicken;
-import morethantrees.entity.mobs.EntityTallChicken;
-import morethantrees.entity.mobs.EntityZombieCow;
 import morethantrees.flowers.BlockAmaryllis;
 import morethantrees.flowers.BlockArrowCactus;
 import morethantrees.flowers.BlockBlackCallaLily;
@@ -380,9 +373,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.BlockVine;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityEggInfo;
-import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
@@ -2376,47 +2366,47 @@ public class MTJT
         EntityRegistry.registerModEntity(EntityFireBalls.class, "FireBalls", 21, this, 8, 1, true);
         
         //Mobs
-        EntityRegistry.registerModEntity(EntitySkyChicken.class, "SkyChicken", 2, this, 80, 3, true);
-        EntityRegistry.addSpawn(EntitySkyChicken.class, 10, 2, 4, EnumCreatureType.creature);
-        LanguageRegistry.instance().addStringLocalization("entity.MTJT.SkyChicken.name", "en_US", "Sky Chicken");
-        EntityList.IDtoClassMapping.put(Integer.valueOf(3), EntitySkyChicken.class);
-        EntityList.entityEggs.put(Integer.valueOf(3), new EntityEggInfo(3, 2039583, 11638068));
-        
-        EntityRegistry.registerModEntity(EntityTallChicken.class, "TallChicken", 5, this, 80, 3, true);
-        EntityRegistry.addSpawn(EntityTallChicken.class, 1, 1, 1, EnumCreatureType.creature, MTJT.unnaturalPlains);
-        LanguageRegistry.instance().addStringLocalization("entity.MTJT.TallChicken.name", "en_US", "Tall Chicken");
-        EntityList.IDtoClassMapping.put(Integer.valueOf(1), EntityTallChicken.class);
-        EntityList.entityEggs.put(Integer.valueOf(1), new EntityEggInfo(1, 2039583, 11638068));
-        
-        EntityRegistry.registerModEntity(EntityGoat.class, "Goat", 6, this, 80, 3, true);
-        EntityRegistry.addSpawn(EntityGoat.class, 1, 1, 2, EnumCreatureType.creature, MTJT.blackMountains, MTJT.cliffs, MTJT.hurtfulHills, MTJT.stoneMountains, BiomeGenBase.extremeHills);
-        LanguageRegistry.instance().addStringLocalization("entity.MTJT.Goat.name", "en_US", "Goat");
-        EntityList.IDtoClassMapping.put(Integer.valueOf(6), EntityGoat.class);
-        EntityList.entityEggs.put(Integer.valueOf(6), new EntityEggInfo(6, 2039583, 11638068));
-        
-        EntityRegistry.registerModEntity(EntityPunSheep.class, "PunSheep", 7, this, 80, 3, true);
-        EntityRegistry.addSpawn(EntityPunSheep.class, 1, 2, 2, EnumCreatureType.creature, MTJT.cliffs, MTJT.eggHills, MTJT.theOrient);
-        LanguageRegistry.instance().addStringLocalization("entity.MTJT.PunSheep.name", "en_US", "Punch Sheep");
-        EntityList.IDtoClassMapping.put(Integer.valueOf(7), EntityPunSheep.class);
-        EntityList.entityEggs.put(Integer.valueOf(7), new EntityEggInfo(7, 2039583, 11638068));
-        
-        EntityRegistry.registerModEntity(EntityBlueCow.class, "BlueCow", 18, this, 80, 3, true);
-        EntityRegistry.addSpawn(EntityBlueCow.class, 1, 1, 2, EnumCreatureType.creature, MTJT.theOrient);
-        LanguageRegistry.instance().addStringLocalization("entity.MTJT.BlueCow.name", "en_US", "Blue Cow");
-        EntityList.IDtoClassMapping.put(Integer.valueOf(18), EntityBlueCow.class);
-        EntityList.entityEggs.put(Integer.valueOf(18), new EntityEggInfo(18, 2039583, 11638068));
-        
-        EntityRegistry.registerModEntity(EntityZombieCow.class, "ZombieCow", 20, this, 80, 3, true);
-        EntityRegistry.addSpawn(EntityZombieCow.class, 1, 1, 1, EnumCreatureType.creature);
-        LanguageRegistry.instance().addStringLocalization("entity.MTJT.ZombieCow.name", "en_US", "Mad Cow");
-        EntityList.IDtoClassMapping.put(Integer.valueOf(20), EntityZombieCow.class);
-        EntityList.entityEggs.put(Integer.valueOf(20), new EntityEggInfo(20, 2039583, 11638068));
-        
-        EntityRegistry.registerModEntity(EntityEasySpider.class, "EasySpider", 22, this, 80, 3, true);
-        EntityRegistry.addSpawn(EntityEasySpider.class, 1, 1, 1, EnumCreatureType.creature);
-        LanguageRegistry.instance().addStringLocalization("entity.MTJT.EasySpider.name", "en_US", "Easy Spider");
-        EntityList.IDtoClassMapping.put(Integer.valueOf(22), EntityEasySpider.class);
-        EntityList.entityEggs.put(Integer.valueOf(22), new EntityEggInfo(22, 2039583, 11638068));
+        //        EntityRegistry.registerModEntity(EntitySkyChicken.class, "SkyChicken", 2, this, 80, 3, true);
+        //        EntityRegistry.addSpawn(EntitySkyChicken.class, 10, 2, 4, EnumCreatureType.creature);
+        //        LanguageRegistry.instance().addStringLocalization("entity.MTJT.SkyChicken.name", "en_US", "Sky Chicken");
+        //        EntityList.IDtoClassMapping.put(Integer.valueOf(3), EntitySkyChicken.class);
+        //        EntityList.entityEggs.put(Integer.valueOf(3), new EntityEggInfo(3, 2039583, 11638068));
+        //        
+        //        EntityRegistry.registerModEntity(EntityTallChicken.class, "TallChicken", 5, this, 80, 3, true);
+        //        EntityRegistry.addSpawn(EntityTallChicken.class, 1, 1, 1, EnumCreatureType.creature, MTJT.unnaturalPlains);
+        //        LanguageRegistry.instance().addStringLocalization("entity.MTJT.TallChicken.name", "en_US", "Tall Chicken");
+        //        EntityList.IDtoClassMapping.put(Integer.valueOf(1), EntityTallChicken.class);
+        //        EntityList.entityEggs.put(Integer.valueOf(1), new EntityEggInfo(1, 2039583, 11638068));
+        //        
+        //        EntityRegistry.registerModEntity(EntityGoat.class, "Goat", 6, this, 80, 3, true);
+        //        EntityRegistry.addSpawn(EntityGoat.class, 1, 1, 2, EnumCreatureType.creature, MTJT.blackMountains, MTJT.cliffs, MTJT.hurtfulHills, MTJT.stoneMountains, BiomeGenBase.extremeHills);
+        //        LanguageRegistry.instance().addStringLocalization("entity.MTJT.Goat.name", "en_US", "Goat");
+        //        EntityList.IDtoClassMapping.put(Integer.valueOf(6), EntityGoat.class);
+        //        EntityList.entityEggs.put(Integer.valueOf(6), new EntityEggInfo(6, 2039583, 11638068));
+        //        
+        //        EntityRegistry.registerModEntity(EntityPunSheep.class, "PunSheep", 7, this, 80, 3, true);
+        //        EntityRegistry.addSpawn(EntityPunSheep.class, 1, 2, 2, EnumCreatureType.creature, MTJT.cliffs, MTJT.eggHills, MTJT.theOrient);
+        //        LanguageRegistry.instance().addStringLocalization("entity.MTJT.PunSheep.name", "en_US", "Punch Sheep");
+        //        EntityList.IDtoClassMapping.put(Integer.valueOf(7), EntityPunSheep.class);
+        //        EntityList.entityEggs.put(Integer.valueOf(7), new EntityEggInfo(7, 2039583, 11638068));
+        //        
+        //        EntityRegistry.registerModEntity(EntityBlueCow.class, "BlueCow", 18, this, 80, 3, true);
+        //        EntityRegistry.addSpawn(EntityBlueCow.class, 1, 1, 2, EnumCreatureType.creature, MTJT.theOrient);
+        //        LanguageRegistry.instance().addStringLocalization("entity.MTJT.BlueCow.name", "en_US", "Blue Cow");
+        //        EntityList.IDtoClassMapping.put(Integer.valueOf(18), EntityBlueCow.class);
+        //        EntityList.entityEggs.put(Integer.valueOf(18), new EntityEggInfo(18, 2039583, 11638068));
+        //        
+        //        EntityRegistry.registerModEntity(EntityZombieCow.class, "ZombieCow", 20, this, 80, 3, true);
+        //        EntityRegistry.addSpawn(EntityZombieCow.class, 1, 1, 1, EnumCreatureType.creature);
+        //        LanguageRegistry.instance().addStringLocalization("entity.MTJT.ZombieCow.name", "en_US", "Mad Cow");
+        //        EntityList.IDtoClassMapping.put(Integer.valueOf(20), EntityZombieCow.class);
+        //        EntityList.entityEggs.put(Integer.valueOf(20), new EntityEggInfo(20, 2039583, 11638068));
+        //        
+        //        EntityRegistry.registerModEntity(EntityEasySpider.class, "EasySpider", 22, this, 80, 3, true);
+        //        EntityRegistry.addSpawn(EntityEasySpider.class, 1, 1, 1, EnumCreatureType.creature);
+        //        LanguageRegistry.instance().addStringLocalization("entity.MTJT.EasySpider.name", "en_US", "Easy Spider");
+        //        EntityList.IDtoClassMapping.put(Integer.valueOf(22), EntityEasySpider.class);
+        //        EntityList.entityEggs.put(Integer.valueOf(22), new EntityEggInfo(22, 2039583, 11638068));
         
         proxy.registerTileEntitySpecialRenderer();
         proxy.registerRenderThings();

@@ -89,6 +89,7 @@
         <!-- build the jar -->
         <jar destfile="${release.home}/${release.jar}">
             <fileset dir="${mcp.bin}" includes="extrabiomes/**/*.class"/>
+            <fileset dir="${mcp.bin}" includes="morethantrees/**/*.class"/>
             <fileset dir="${dev.resources}">
                 <exclude name="mcmod.template"/>
             </fileset>

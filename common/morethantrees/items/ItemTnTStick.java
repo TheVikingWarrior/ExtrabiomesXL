@@ -19,6 +19,7 @@ public class ItemTnTStick extends Item
         
     }
     
+    @Override
     public ItemStack onItemRightClick(ItemStack var1, World var2, EntityPlayer var3)
     {
         if (!var3.capabilities.isCreativeMode)
@@ -36,7 +37,7 @@ public class ItemTnTStick extends Item
     @Override
     public void registerIcons(IconRegister iconRegister)
     {
-        itemIcon = iconRegister.registerIcon("MTJT:tntStick");
+        itemIcon = iconRegister.registerIcon("mtjt:tntStick");
     }
     
 }
